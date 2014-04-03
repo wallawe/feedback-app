@@ -26,4 +26,14 @@ FeedbackApp::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "sandboxd7625f1d340a4471a2b7c2116e4cdabb.mailgun.org",
+    :user_name => "postmaster@sandboxd7625f1d340a4471a2b7c2116e4cdabb.mailgun.org",
+    :password => "205ur8lkb9c7"
+  }
 end
