@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    ModelMailer.simple_email_send(@user).deliver
+    #ModelMailer.simple_email_send(@user).deliver
   end
 
 end
