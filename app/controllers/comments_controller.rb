@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_filter :set_headers
+  protect_from_forgery with: :null_session
 
   def index
     @domain = Domain.find(params[:domain_id])
@@ -20,7 +22,7 @@ class CommentsController < ApplicationController
   def create
 
     @comment = Comment.new(comment_params)
-    @comment.domain = Domain.find(params[:domain_id])
+    #@comment.domain = Domain.find(params[:domain_id])
 
     respond_to do |format|
       if @comment.save
@@ -53,6 +55,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def options
+    set_headers
+    # this will send an empty request to the clien with 200 status code (OK, can proceed)
+    render :text => '', :content_type => 'text/plain'
+  end
+
   private
     def set_comment
       @comment = Comment.find(params[:id])
@@ -60,5 +68,14 @@ class CommentsController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:url, :email, :feedback, :domain_id)
+    end
+
+    # Set CORS
+    def set_headers
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Expose-Headers'] = 'Etag'
+      headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD'
+      headers['Access-Control-Allow-Headers'] = '*, x-requested-with, Content-Type, If-Modified-Since, If-None-Match'
+      headers['Access-Control-Max-Age'] = '86400'
     end
 end
