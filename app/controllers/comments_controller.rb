@@ -22,12 +22,15 @@ class CommentsController < ApplicationController
   def create
 
     @comment = Comment.new(comment_params)
-    #@comment.domain = Domain.find(params[:domain_id])
+    @user = @comment.domain.user
+    @feedback = @comment.feedback
+    @submitter = @comment.email
 
     respond_to do |format|
       if @comment.save
         format.html { redirect_to domain_comments_path, notice: 'comment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @comment }
+        ModelMailer.simple_email_send(@user, @submitter, @feedback).deliver
       else
         format.html { render action: 'new' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }

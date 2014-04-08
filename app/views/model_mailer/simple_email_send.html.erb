@@ -1,0 +1,9 @@
+Hi, <%= @user.email %>
+
+<h3>This is you feedback: </h3>
+
+<p><%= @feedback %><p>
+
+<% unless @submitter.blank? %>
+From: <%= @submitter %>
+<% end %>
