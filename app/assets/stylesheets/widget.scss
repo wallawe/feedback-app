@@ -2,7 +2,7 @@
 .feedback-container {
   width: 320px;
   padding: 0 20px 10px 20px;
-  background: #435a6b;
+  background: #333;
   border-bottom: none;
   position: absolute;
   bottom: 0;
@@ -21,6 +21,7 @@
   cursor: pointer;
   color: #fff;
   text-align: center;
+  font-size: 15px;
   padding: 10px 10px 0px 10px;
 }
 .feedback-container .plus, .feedback-container .minus {
@@ -51,8 +52,8 @@
 }
 
 .feedback-container .submit-button {
-  background: #435a6b;
-  border: 3px solid #354856;
+  background: #333;
+  border: 2px solid #fff;
   padding: 5px 14px;
   font-size: 14px;
   text-transform: uppercase;

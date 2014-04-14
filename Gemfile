@@ -8,7 +8,6 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'pg'
-gem 'thin'
 group :development do
   gem 'hub', :require=>nil
   gem 'rails_layout'

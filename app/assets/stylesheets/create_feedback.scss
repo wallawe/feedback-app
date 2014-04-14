@@ -1,6 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 .mock-page {
-  width: 800px;
-  height: 700px;
+  width: 80%;
+  min-height: 700px;
+  height: auto;
   margin: 100px auto;
   border: 1px solid #bbb;
   overflow: hidden;
@@ -24,4 +29,14 @@
   color: #555555;
   cursor: pointer;
   outline: none;
+}
+
+.code-container {
+  width: auto;
+  padding: 20px;
+  margin: 20px 20px 40px 20px;
+  height: auto;
+  min-height: 20px;
+  border: 2px solid #ddd;
+  overflow: scroll;
 }
