@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :domains
+  has_many :domains, :dependent => :destroy
   accepts_nested_attributes_for :domains
 end
