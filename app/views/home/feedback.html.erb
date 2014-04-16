@@ -1,69 +1,100 @@
-
-    <div class="mock-page">
-      <div class="settings">
-
-
-        <h2>Styles</h2>
-
-        <span>Background Color: </span><input class="bg-hex" type="text"><br>
-        <span>Input field background color: </span><input class="field-color" type="text"><br>
-        <span>Text Color: </span><input class="text-hex" type="text"><br>
-        <p>
-          <label for="amount">Container Border Radius:</label>
-          <input type="text" class="container-radius" value="5px" style='border:none;'>
-        </p>
+<div class="container">
+  <div class="settings" id="msform">
+    <fieldset>
+      <h2>Get your style on</h2>
+      <input class="bg-hex" type="text" placeholder="background color">
+      <input class="field-color" type="text" placeholder="field color">
+      <input class="text-hex" type="text" placeholder="text color">
+      <div class="range-sliders">
+        <label for="container_radius">Container Border Radius</label>
+        <input type="hidden" class="container-radius" id="container_radius" value="0" style='border:none;'>
         <div id="cRadius-range"></div>
-        <p>
-          <label for="amount">Form and Button Border Radius:</label>
-          <input type="text" class="field-radius" value="0px" style='border:none;'>
-        </p>
+        <label for="input_radius">Form and Button Border Radius</label>
+        <input type="hidden" class="field-radius" id="input_radius" value="0" style='border:none;'>
         <div id="fRadius-range"></div>
-        <hr>
+      </div>
+      <input type="button" name="next" class="next action-button" value="Next" />
+    </fieldset>
 
+    <fieldset>
+      <h2>What do you want to find out?</h2>
+      <input class="headline-text" type="text" placeholder="headline text">
+      <input class="email-text" type="text" placeholder="email placeholder">
+      <input class="body-text" type="text" placeholder="body text placeholder">
+      <input class="button-text" type="text" placeholder="button text">
+      <input type="button" name="previous" class="previous action-button" value="Previous" />
+      <input type="button" name="next" class="next action-button" value="Next" />
+    </fieldset>
 
-        <h2>Content</h2>
-
-        <span>Headline text: </span><input class="headline-text" type="text"><br>
-        <span>Email placeholder text: </span><input class="email-text" type="text"><br>
-        <span>Body placeholder text: </span><input class="body-text" type="text"><br>
-        <span>Button text: </span><input class="button-text" type="text"><br>
-        <span>Display or Hide on load?</span><br>
+    <fieldset>
+      <h2>Grand finale</h2>
+      <div class="display-options">
         <input type="radio" id="yes-display" name="widget-display-options" checked>
-        <label for="yes-display">Show</label>
+        <label for="yes-display">Show fully on load</label><br>
         <input type="radio" id="no-hide" name="widget-display-options">
-        <label for="no-hide">Hide</label>
-        <br><hr>
+        <label for="no-hide">Hide on load</label>
+      </div>
+      <%= render 'users/sign_up' %>
+      <input type="button" name="previous" class="previous action-button" value="Previous" />
+    </fieldset>
 
-
-        <h2>User Info</h2>
-        <%= render 'users/sign_up' %>
-        <hr>
-
-        <button onclick="displayCode();">Give me the code!</button>
-
-
-  <div class="feedback-container">
-    <p class="action-call">Help us understand WTF we're doing</p><span class="minus action-call">–</span>
-
-    <form id="feedback_form_0243" method="post" name="a_feedback_form"
-    style="display: none;">
-      <input id="domain_id" name="comment[domain_id]" type="hidden"><input id="comment_url" name="comment[url]" type=
-      "hidden"><input class="interactive" id="feedback_email" name=
-      "comment[email]" placeholder="email (optional)" type="text">
-      <textarea class="interactive" id="feedback_text" name="comment[feedback]"
-      placeholder="your words of wisdom" required="" rows="4">
-</textarea><input class="interactive submit-button" name="commit" type="submit"
-      value="send">
-    </form>
+    <div class="platform"></div>
   </div>
 
-      </div>
+  <ul id="progressbar">
+    <li class="text-edit active">Style</li>
+    <li class="style-edit">text</li>
+    <li class="user-edit">Finish</li>
+  </ul>
+</div>
 
-      <div class="code-container"></div>
+<!--   <button onclick="displayCode();">Gimme that good shit</button> -->
 
-    </div>
+
+
+<div class="code-container"></div>
+<script type="text/javascript">
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+
+
+$(".next").click(function(){
+
+  current_fs = $(this).parent();
+  next_fs = $(this).parent().next();
+
+  //activate next step on progressbar using the index of next_fs
+  $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+  //show the next fieldset
+  next_fs.fadeIn(600);
+  current_fs.hide();
+  //hide the current fieldset with style
+});
+
+$(".previous").click(function(){
+
+  current_fs = $(this).parent();
+  previous_fs = $(this).parent().prev();
+
+  //de-activate current step on progressbar
+  $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+  //show the previous fieldset
+  previous_fs.fadeIn(600);
+  current_fs.hide();
+  //hide the current fieldset with style
+});
+
+$(".submit").click(function(){
+  return false;
+})
+</script>
+
+
 
 <% content_for :js do %>
-  <%= javascript_include_tag 'widget' %>
   <%= javascript_include_tag 'create_feedback' %>
+  <%= javascript_include_tag 'widget' %>
 <% end %>

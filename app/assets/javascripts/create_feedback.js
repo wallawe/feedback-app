@@ -60,7 +60,7 @@ $(function() {
   $( "#cRadius-range" ).slider({
     min: 0,
     max: 20,
-    value: 5,
+    value: 0,
     slide: function( event, ui ) {
       $('.container-radius').val( ui.value );
     },
@@ -103,8 +103,8 @@ var displayCode = function() {
 
   var markup = replaceWithEntities(containerJs);
 
-  //replace the script variable with final js when ready, hopefully not reliant on jquery. This code is not dynamic and doesn't need to be
-  var script = 'var currentUrl=window.location.href;$("#comment_url").val(currentUrl);$(document).on("click",".action-call",function(){$("#feedback_form_0243").slideToggle(100);$(".minus").toggle();$(".plus").toggle()});var fb_form=$("#feedback_form_0243");fb_form.submit(function(e){$.ajax({type:fb_form.attr("method"),url:fb_form.attr("action"),data:fb_form.serialize(),success:function(){alert("cool, this worked");$(".feedback-container").hide()},error:function(){alert("ALERT! ERROR")}});e.preventDefault()});$(".mock-page").append($html);'
+  //whatever is below the =========== line in widget.js is what should be minified and set to script below
+  var script = 'var currentUrl=window.location.href;$("#comment_url").val(currentUrl);$(document).on("click",".action-call",function(){$("#feedback_form_0243").slideToggle(100)});var fb_form=$("#feedback_form_0243");fb_form.submit(function(e){$.ajax({type:fb_form.attr("method"),url:fb_form.attr("action"),data:fb_form.serialize(),success:function(){alert("cool, this worked");$(".feedback-container").hide()},error:function(){alert("ALERT! ERROR")}});e.preventDefault()});$(".mock-page").append($html);'
   $('.code-container').append('<code> var $html = &#39;'+ markup + '&#39;;' + script + '</code>');
 }
 

@@ -3,6 +3,7 @@ $("form.new_user").slideUp();
 
 //update the values for the user's form they will be putting on their site, so it saves comments properly
 var domainId = "<%= @user.domains.last.id %>";
+
 $('#feedback_form_0243').attr('action', 'http://localhost:7000/domains/' + domainId + '/comments' );
 $('#domain_id').attr('value', domainId );
 

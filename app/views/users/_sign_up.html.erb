@@ -4,19 +4,14 @@
   :format => :json,
   :remote => true ) do |f| %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
   <%= f.fields_for :domains, Domain.new do |builder| %>
-    <%= builder.label :url %><br>
-    <%= builder.text_field :url %>
+    <%= builder.text_field :url, placeholder: "name your domain", :class => "user-domain", :required => true %>
   <% end %>
 
-  <div><%= f.submit "Sign up", :id => "user_new" %></div>
+  <%= f.email_field :email, placeholder: "your email", :class => "user-email", :required => true %>
+  <%= f.password_field :password, placeholder: "password", :class => "user-pw", :required => true %>
+  <%= f.password_field :password_confirmation, placeholder: "password confirm", :class => "user-confirm", :required => true %>
+
+  <%= f.submit "Sign up", :id => "user_new", :class => "action-button" %>
+
 <% end %>
