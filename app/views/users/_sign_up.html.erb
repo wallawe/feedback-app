@@ -1,17 +1,31 @@
-<%= form_for(resource, :as => resource_name,
-  :url => registration_path(resource_name),
-  :html => {:id => "sign_up_user"},
-  :format => :json,
-  :remote => true ) do |f| %>
+<section class="controls left-side ui raised segment">
+  <header class="ui top attached green label">make it yours</header>
+   <div class="ui form">
+     <%= form_for(resource, :as => resource_name,
+      :url => registration_path(resource_name),
+      :html => {:id => "sign_up_user"},
+      :format => :json,
+      :remote => true ) do |f| %>
 
-  <%= f.fields_for :domains, Domain.new do |builder| %>
-    <%= builder.text_field :url, placeholder: "name your domain", :class => "user-domain", :required => true %>
-  <% end %>
+        <div class="field">
+          <%= f.fields_for :domains, Domain.new do |builder| %>
+            <%= builder.text_field :url, placeholder: "name of your domain", :class => "user-domain", :required => true %>
+          <% end %>
+        </div>
+        <div class="field">
+          <%= f.email_field :email, placeholder: "your email", :class => "user-email", :required => true %>
+        </div>
+        <div class="field">
+          <%= f.password_field :password, placeholder: "password", :class => "user-pw", :required => true %>
+        </div>
+        <div class="field">
+          <%= f.password_field :password_confirmation, placeholder: "password confirm", :class => "user-confirm", :required => true %>
+        </div>
+      </div>
 
-  <%= f.email_field :email, placeholder: "your email", :class => "user-email", :required => true %>
-  <%= f.password_field :password, placeholder: "password", :class => "user-pw", :required => true %>
-  <%= f.password_field :password_confirmation, placeholder: "password confirm", :class => "user-confirm", :required => true %>
+</section>
 
-  <%= f.submit "Sign up", :id => "user_new", :class => "action-button" %>
+<input type="button" name="previous" class="previous action-button ui button" value="back" />
+<%= f.submit "finish", :id => "user_new", :class => "action-button ui green button" %>
 
 <% end %>

@@ -1,28 +1,20 @@
 class DomainsController < ApplicationController
   before_action :set_domain, only: [:show, :edit, :update, :destroy]
 
-  # GET /domains
-  # GET /domains.json
   def index
     @domains = Domain.all
   end
 
-  # GET /domains/1
-  # GET /domains/1.json
   def show
   end
 
-  # GET /domains/new
   def new
     @domain = Domain.new
   end
 
-  # GET /domains/1/edit
   def edit
   end
 
-  # POST /domains
-  # POST /domains.json
   def create
     @domain = Domain.new(domain_params)
     @domain.user = current_user
@@ -38,8 +30,6 @@ class DomainsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /domains/1
-  # PATCH/PUT /domains/1.json
   def update
     respond_to do |format|
       if @domain.update(domain_params)
@@ -52,8 +42,6 @@ class DomainsController < ApplicationController
     end
   end
 
-  # DELETE /domains/1
-  # DELETE /domains/1.json
   def destroy
     @domain.destroy
     respond_to do |format|

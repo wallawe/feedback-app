@@ -5,7 +5,7 @@ FeedbackApp::Application.routes.draw do
   end
 
   get 'feedback' => 'home#feedback'
-  root :to => "home#index"
+  root :to => "home#feedback"
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
 end

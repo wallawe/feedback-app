@@ -41,20 +41,23 @@ $('#font_choices').change(function(){
   $('.feedback-container .interactive').css('font-family', newFont );
 });
 
-$('input[type=radio]').on('click',function() {
-  checkRadio($(this));
-});
-
-var checkRadio = function(el) {
+$('input[name=widget-display-options]').on('click',function() {
   if ( document.getElementById('yes-display').checked ) {
     $('#feedback_form_0243').css('display','block')
   } else if ( document.getElementById('no-hide').checked ) {
     $('#feedback_form_0243').css('display','none')
   }
-};
+});
 
-checkRadio($('input[type=radio]'));
-
+$('.theme-choose').on('click', function() {
+  if ( document.getElementById('turn_dark').checked ) {
+    $('.feedback-container').removeClass('light');
+    $('.feedback-container').addClass('dark');
+  } else if (document.getElementById('turn_light').checked ) {
+    $('.feedback-container').addClass('light');
+    $('.feedback-container').removeClass('dark');
+  }
+})
 
 $(function() {
   $( "#cRadius-range" ).slider({
@@ -108,6 +111,9 @@ var displayCode = function() {
   $('.code-container').append('<code> var $html = &#39;'+ markup + '&#39;;' + script + '</code>');
 }
 
+// $('input[type=submit]').on('click', function(){
+//   $('body').append('<div class="ui active loader"></div>');
+// })
 
 
 

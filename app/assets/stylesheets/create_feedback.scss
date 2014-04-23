@@ -54,15 +54,6 @@
   }
 
   .action-button {
-    width: 100px;
-    background: #27AE60;
-    font-weight: bold;
-    color: white;
-    border: 0 none;
-    border-radius: 1px;
-    cursor: pointer;
-    padding: 10px 5px;
-    margin: 10px 5px;
     position: absolute;
     bottom: 0;
 
@@ -73,10 +64,6 @@
     &.previous {
       right: 260px;
     }
-  }
-
-  .action-button:hover, #msform .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
   }
 }
 
@@ -95,82 +82,24 @@
 
   fieldset {
     border: none;
-    &:not(:first-of-type) {
-      display: none;
-    }
+
+    &:not(:first-of-type) { display: none; }
 
     h2 { text-align: center; }
 
-    input {
-      border: 1px solid transparent;
-      border-bottom: 1px solid #ddd;
-      outline: none;
-      padding: 10px;
+    .controls {
       position: absolute;
-      &:after {
-        content: "";
-        width: 100px;
-        border-bottom: 1px solid #ddd;
-        height: 20px;
-        background: red;
-      }
-      &:focus {
-        border: 1px solid #ddd;
-      }
-      &.bg-hex {
-        left: -160px;
-        top: 120px;
-      }
-      &.field-color {
-        top: 200px;
-        left: -160px;
-      }
-      &.text-hex {
-        top: 280px;
-        left: -160px;
-      }
-      &.body-text {
-        right: -160px;
-        top: 140px;
-      }
-      &.button-text {
-        right: -160px;
-        top: 230px;
-      }
-      &.email-text {
-        left: -160px;
-        top: 230px;
-      }
-      &.headline-text {
-        top: 140px;
-        left: -160px;
-      }
-      &.user-email {
-        right: -160px;
-        top: 120px;
-      }
-      &.user-pw {
-        right: -160px;
-        top: 200px;
-      }
-      &.user-confirm {
-        right: -160px;
-        top: 280px;
-      }
-      &.user-domain {
-        left: -160px;
-        top: 160px;
-      }
+      top: 60px;
+      width: 200px;
+
+      &.left-side { left: -180px; }
+      &.right-side { right: -180px; }
     }
 
     .range-sliders {
-      position: absolute;
-      right: -200px;
-      top: 160px;
-
       label {
         font-size: 12px;
-        color: #999;
+        color: #404040;
         line-height: 20px;
         display: block;
         text-align: center;
@@ -184,18 +113,6 @@
         margin-top: 10px;
         border-radius: 0;
       }
-    }
-
-    .display-options {
-      position: absolute;
-      left: -160px;
-      top: 230px;
-      label {
-        font-size: 12px;
-        color: #999;
-        cursor: pointer;
-      }
-      input { position: static; }
     }
   }
 }
@@ -214,7 +131,7 @@
 }
 
 .code-container {
-  width: 800px;
+  width: 100%;
   padding: 20px;
   margin: 40px auto;
   height: auto;
