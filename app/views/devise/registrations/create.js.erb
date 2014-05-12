@@ -7,8 +7,6 @@ $('#domain_id').attr('value', domainId );
 //reload top nav now that they are logged in
 $(".nav").html("<%= escape_javascript(render(:partial => "layouts/navigation_links"))%>");
 
-// $('div.loader').remove();
-
 displayCode();
 
 $('.ui.modal').modal('show');

@@ -111,9 +111,5 @@ var displayCode = function() {
   $('.code-container').append('<code> var $html = &#39;'+ markup + '&#39;;' + script + '</code>');
 }
 
-// $('input[type=submit]').on('click', function(){
-//   $('body').append('<div class="ui active loader"></div>');
-// })
-
 
 
