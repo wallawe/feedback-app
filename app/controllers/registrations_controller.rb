@@ -2,7 +2,8 @@ class RegistrationsController < Devise::RegistrationsController
   before_filter :update_sanitized_params, if: :devise_controller?
 
   def update_sanitized_params
-    devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:email, :password, :password_confirmation, :domains_attributes => [:url, :markup]) }
+    devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:email, :password, :password_confirmation,
+      :domains_attributes => [:url, :tint, :display, :content_type, :title, :field_1, :field_2, :question_1, :question_2, :question_3, :question_4]) }
     devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:email, :password, :password_confirmation, :current_password) }
   end
 
@@ -13,7 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-    sleep 3 if Rails.env.development?
+    sleep 1 if Rails.env.development?
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?

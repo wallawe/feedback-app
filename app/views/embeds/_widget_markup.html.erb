@@ -1,0 +1,47 @@
+<div class="feedback-container <%= @domain.tint %>">
+
+  <p class="action-call"><%= @domain.title %></p>
+
+  <span class="minus action-call">–</span>
+
+  <form
+    id="feedback_form_839224"
+    method="post"
+    action="http://localhost:7000/domains/<%= @domain.id%>/comments"
+    name="a_feedback_form"
+    class="<%= initial_display(@domain.display) %>">
+
+    <input
+      id="domain_id"
+      name="comment[domain_id]"
+      type="hidden"
+      value="<%= @domain.id %>">
+
+    <input
+      id="comment_url"
+      name="comment[url]"
+      type="hidden">
+
+    <input
+      class="interactive"
+      id="feedback_email"
+      name="comment[email]"
+      placeholder="<%= @domain.field_1 %>"
+      type="text">
+
+    <textarea
+      class="interactive"
+      id="feedback_text"
+      name="comment[feedback]"
+      placeholder="<%= @domain.field_2%>"
+      rows="4" required>
+    </textarea>
+
+    <input
+      class="interactive submit-button"
+      name="commit"
+      type="submit"
+      value="Submit">
+
+  </form>
+</div>

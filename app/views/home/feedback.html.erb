@@ -1,129 +1,87 @@
-<div class="container">
-  <div class="settings" id="msform">
-    <fieldset>
-      <h2>Get your style on</h2>
-<!--  HOLDING OFF WITH USE OF THESE FOR NOW
-      <input class="bg-hex" type="text" placeholder="background color">
-      <input class="field-color" type="text" placeholder="field color">
-      <input class="text-hex" type="text" placeholder="text color">
--->
-      <section class="left-side controls ui raised segment">
-        <header class="ui top attached label">Theme Color</header>
-        <div class="ui form">
-          <div class="grouped inline fields">
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="color-theme" id="turn_dark" class="theme-choose" checked>
-                <label for="turn_dark">Dark</label><br>
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="color-theme" id="turn_light" class="theme-choose">
-                <label for="turn_light">Light</label>
-              </div>
-            </div>
-          </div>
-      </section>
-      <section class="right-side controls ui raised segment">
-        <header class="ui top attached label">Corners</header>
-        <div class="range-sliders">
-          <label for="container_radius">Container Border Radius</label>
-          <input type="hidden" class="container-radius" id="container_radius" value="5" style='border:none;'>
-          <div id="cRadius-range"></div>
-          <label for="input_radius">Form and Button Border Radius</label>
-          <input type="hidden" class="field-radius" id="input_radius" value="5" style='border:none;'>
-          <div id="fRadius-range"></div>
-        </div>
-      </section>
-      <input type="button" name="next" class="next action-button ui green button" value="Next" />
-    </fieldset>
+<%= form_for(resource, :as => resource_name,
+  :url => registration_path(resource_name),
+  :html => {:id => "sign_up_user"},
+  :format => :json,
+  :remote => true ) do |f| %>
 
-    <fieldset>
-      <h2>What kind of feedback do you want?</h2>
-      <section class="left-side controls ui raised segment">
-        <header class="ui top attached label">Engage your users</header>
-        <div class="ui form">
-          <div class="field">
-            <label for="headline_text">top content</label>
-            <input class="headline-text" type="text" id="headline_text" placeholder="What feature would you like to see next?">
-          </div>
-          <div class="field">
-            <label for="email_text">first field text</label>
-            <input class="email-text" id="email_text" type="text" placeholder="email (optional)">
-          </div>
-          <div class="field">
-            <label for="body_text">feedback capture</label>
-            <input class="body-text" id="body_text" type="text" placeholder="Let us know">
-          </div>
-          <div class="field">
-            <label for="button_text">button text</label>
-            <input class="button-text" id="button_text" type="text" placeholder="send">
-          </div>
-        </div>
+  <div class="container">
+    <div class="settings" id="msform">
+      <%= f.fields_for :domains, Domain.new do |builder| %>
+        <fieldset>
+          <%= builder.radio_button(:content_type, "mult-choice", :checked => true, :id => "multiple_choice") %>
+          <label for="multiple_choice">Multiple Choice</label><br>
 
-      </section>
-      <section class="right-side controls ui raised segment">
-        <header class="ui top attached label">Display on load</header>
-        <div class="display-options">
-          <div class="ui form">
-            <div class="grouped inline fields">
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" id="yes-display" name="widget-display-options" checked>
-                  <label for="yes-display">Entire form</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" id="no-hide" name="widget-display-options">
-                  <label for="no-hide">Title only</label>
-                </div>
-              </div>
-            </div>
+          <%= builder.radio_button(:content_type, "free-form", :id => "free_form") %>
+          <label for="free_form">Free Form</label>
+        </fieldset>
+
+        <fieldset>
+          <%= builder.radio_button(:tint, "dark", id: 'turn_dark', :class => 'theme-choose', :checked => true) %>
+          <label for="turn_dark">Dark</label><br>
+
+          <%= builder.radio_button(:tint, "light", id: 'turn_light', :class => 'theme-choose') %>
+          <label for="turn_light">Light</label>
+        </fieldset>
+
+        <fieldset>
+          <%= builder.text_field :title, :id => "headline_text", :class => "headline-text" %>
+          <%= builder.label :title %><br>
+
+          <%= builder.text_field :field_1, :class => "email-text", :id => "email_text" %>
+          <%= builder.label :field_1, "Input Field" %><br>
+
+          <%= builder.text_field :field_2, :class => "body-text", :id => "body_text" %>
+          <%= builder.label :field_2, "Text field" %><br>
+
+          <%= builder.text_field :question_1 %>
+          <%= builder.label :question_1, "Question 1" %><br>
+
+          <%= builder.text_field :question_2 %>
+          <%= builder.label :question_2, "Question 2" %><br>
+
+          <%= builder.text_field :question_3 %>
+          <%= builder.label :question_3, "Question 3" %><br>
+
+          <%= builder.text_field :question_4 %>
+          <%= builder.label :question_4, "Question 4" %><br>
+        </fieldset>
+
+        <fieldset>
+          <div class="determine-display">
+            <%= builder.radio_button(:display, true, :checked => true, :id => 'yes-display') %>
+            <label for="yes-display">Show on load</label><br>
+
+            <%= builder.radio_button(:display, false, :id => 'no-hide') %>
+            <label for="no-hide">Hide on load</label>
           </div>
-        </div>
-      </section>
+        </fieldset>
 
-      <input type="button" name="previous" class="previous action-button ui button" value="back" />
-      <input type="button" name="next" class="next action-button ui green button" value="next" />
-    </fieldset>
+        <fieldset>
+          <%= builder.text_field :url, :class => "user-domain", :required => true %>
+          <%= builder.label :url, "Name your widget" %><br>
 
-    <fieldset>
-      <h2>Finish up</h2>
-        <%= render 'users/sign_up' %>
-    </fieldset>
+          <%= f.email_field :email, :class => "user-email", :required => true %>
+          <%= f.label :email %><br>
 
-    <div class="platform"></div>
+          <%= f.password_field :password, :class => "user-pw", :required => true %>
+          <%= f.label :password %><br>
+
+          <%= f.password_field :password_confirmation, :class => "user-confirm", :required => true %>
+          <%= f.label :password_confirmation %><br>
+        </fieldset>
+      <% end %>
+    </div>
   </div>
 
-  <ul id="progressbar">
-    <li class="text-edit active">Style</li>
-    <li class="style-edit">text</li>
-    <li class="user-edit">Finish</li>
-  </ul>
-</div>
+  <%= f.submit "finish", :id => "user_new", :class => "action-button ui green button" %>
 
-<!--   <button onclick="displayCode();">Gimme that good shit</button> -->
+<% end %>
 
-
-<div class="ui modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Your Code
-  </div>
-  <div class="content">
-    <div class="code-container"></div>
-  </div>
-  <div class="actions">
-    <div class="ui button">Cool</div>
-  </div>
-</div>
-
-
+<div class="platform"></div>
 
 <% content_for :js do %>
   <%= javascript_include_tag 'slider' %>
   <%= javascript_include_tag 'create_feedback' %>
   <%= javascript_include_tag 'widget' %>
 <% end %>
+

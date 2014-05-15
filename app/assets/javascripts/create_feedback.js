@@ -41,7 +41,7 @@ $('#font_choices').change(function(){
   $('.feedback-container .interactive').css('font-family', newFont );
 });
 
-$('input[name=widget-display-options]').on('click',function() {
+$('.determine-display').on('click',function() {
   if ( document.getElementById('yes-display').checked ) {
     $('#feedback_form_0243').css('display','block')
   } else if ( document.getElementById('no-hide').checked ) {
@@ -100,15 +100,15 @@ var replaceWithEntities = function(str) {
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&# 39;');
 }
 
-var displayCode = function() {
+var displayCode = function(domain) {
   $('.code-container').empty();
-  var containerJs = $('.feedback-container')[0].outerHTML;
+  // var containerJs = $('.feedback-container')[0].outerHTML;
 
-  var markup = replaceWithEntities(containerJs);
+  // var markup = replaceWithEntities(containerJs);
 
-  //whatever is below the =========== line in widget.js is what should be minified and set to script below
-  var script = 'var currentUrl=window.location.href;$("#comment_url").val(currentUrl);$(document).on("click",".action-call",function(){$("#feedback_form_0243").slideToggle(100)});var fb_form=$("#feedback_form_0243");fb_form.submit(function(e){$.ajax({type:fb_form.attr("method"),url:fb_form.attr("action"),data:fb_form.serialize(),success:function(){alert("cool, this worked");$(".feedback-container").hide()},error:function(){alert("ALERT! ERROR")}});e.preventDefault()});$(".mock-page").append($html);'
-  $('.code-container').append('<code> var $html = &#39;'+ markup + '&#39;;' + script + '</code>');
+  // whatever is below the =========== line in widget.js is what should be minified and set to script below
+  // var script = 'var currentUrl=window.location.href;$("#comment_url").val(currentUrl);$(document).on("click",".action-call",function(){$("#feedback_form_0243").slideToggle(100)});var fb_form=$("#feedback_form_0243");fb_form.submit(function(e){$.ajax({type:fb_form.attr("method"),url:fb_form.attr("action"),data:fb_form.serialize(),success:function(){alert("cool, this worked");$(".feedback-container").hide()},error:function(){alert("ALERT! ERROR")}});e.preventDefault()});$(".mock-page").append($html);'
+  $('.code-container').append('&lt;script src="http://localhost:7000/embeds/'+ domain + '.js"&gt;&lt;/script&gt;');
 }
 
 

@@ -1,3 +1,5 @@
 document.write("<%= escape_javascript(render(:partial => 'embeds/widget_css')).html_safe %>");
 
-document.write("hello i luz to twerk. Domain: <%= @domain.id %>, user: <%= @domain.user_id%>");
+document.write("<%= escape_javascript(render(:partial => 'embeds/widget_markup')).html_safe %>");
+
+document.write("<%= escape_javascript(render(:partial => 'embeds/widget_js')).html_safe %>");

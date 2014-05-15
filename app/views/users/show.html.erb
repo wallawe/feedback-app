@@ -7,6 +7,10 @@
 
 <ul>
   <% @user.domains.each do |f| %>
-    <li><%= f.url %> | <%= link_to "See all feedback", domain_comments_path(f) %> | <%= link_to "edit domain", edit_domain_path(f) %></li><br>
+    <li>
+      <%= f.url %> |
+      <%= link_to "See all feedback", domain_comments_path(f) %> |
+      <%= link_to "edit domain", edit_domain_path(f) %>
+    </li>
   <% end %>
 </ul>

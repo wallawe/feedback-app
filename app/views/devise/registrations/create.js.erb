@@ -1,12 +1,14 @@
-//update the values for the user's form they will be putting on their site, so it saves comments properly
+//============================================================
+// DISPLAYS THE MODAL WITH THE <script> TAG
+//============================================================
+
 var domainId = "<%= @user.domains.last.id %>";
 
-$('#feedback_form_0243').attr('action', 'http://localhost:7000/domains/' + domainId + '/comments' );
-$('#domain_id').attr('value', domainId );
-
 //reload top nav now that they are logged in
-$(".nav").html("<%= escape_javascript(render(:partial => "layouts/navigation_links"))%>");
+$(".nav").html("<%= escape_javascript(render(:partial => "layouts/navigation"))%>");
 
-displayCode();
+// append script tag onto div
+displayCode(domainId);
 
+// show the modal
 $('.ui.modal').modal('show');
