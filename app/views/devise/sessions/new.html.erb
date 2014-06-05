@@ -1,43 +1,17 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="ui two column middle aligned relaxed grid basic segment">
-    <div class="column">
-      <div class="ui form segment">
-        <div class="field">
-          <%= f.label :email %>
-          <div class="ui left labeled icon input">
-            <%= f.email_field :email, autofocus: true, placeholder: "Email", required: true %>
-            <i class="user icon"></i>
-            <div class="ui corner label">
-              <i class="asterisk icon"></i>
-            </div>
-          </div>
-        </div>
-        <div class="field">
-          <%= f.label :password %>
-          <div class="ui left labeled icon input">
-            <%= f.password_field :password, placeholder: "Password", required: true %>
-            <i class="lock icon"></i>
-            <div class="ui corner label">
-              <i class="asterisk icon"></i>
-            </div>
-          </div>
-          <% if devise_mapping.rememberable? -%>
-            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-          <% end %>
-        </div>
-        <%= f.submit "Sign in", :class => "ui blue submit button" %>
-      </div>
-    </div>
-    <div class="ui vertical divider">
-      Or
-    </div>
-    <div class="center aligned column">
-      <div class="huge green ui labeled icon button">
-        <i class="signup icon"></i>
-        <%= link_to 'Sign up', new_user_registration_path %>
-      </div>
-    </div>
-  </div>
+  <%= f.label :email, :class => 'label' %>
+  <%= f.email_field :email, autofocus: true, placeholder: "Email", required: true %>
+
+  <%= f.label :password, :class => 'label' %>
+  <%= f.password_field :password, placeholder: "Password", required: true %>
+
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :class => 'label' %></div>
+  <% end %>
+
+  <%= f.submit "Sign in", :class => "button primary" %>
+  or
+  <%= link_to 'Sign up', new_user_registration_path %>
 
 <% end %>

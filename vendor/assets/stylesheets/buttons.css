@@ -1,0 +1,67 @@
+.button {
+    /* Structure */
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    padding: 9px 25px;
+    font-weight: 400;
+    font-size: 17px;
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: transparent;
+}
+
+/* Firefox: Get rid of the inner focus border */
+.button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+.button:focus {
+    outline: 0;
+}
+
+.button:active {
+    box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.29);
+}
+
+.primary {
+    background-color: #4589E3;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5da4ff), color-stop(100%, #417bff));
+    background: -webkit-linear-gradient(#5da4ff, #417bff);
+    background: -moz-linear-gradient(#5da4ff, #417bff);
+    background: -o-linear-gradient(#5da4ff, #417bff);
+    background: linear-gradient(#5da4ff, #417bff);
+}
+
+.success {
+    background-color: #5BBD72;
+    color: #fff;
+}
+
+.button.secondary {
+    color: #4589E3;
+    border: 1px solid #4589E3;
+    padding: 9px 25px;
+    font-weight: 300;
+}
+
+.button-xsmall {
+    font-size: 70%;
+}
+
+.button-small {
+    font-size: 85%;
+}
+
+.button.large {
+    font-size: 120%;
+}
+
+.button-xlarge {
+    font-size: 125%;
+}

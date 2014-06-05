@@ -1,83 +1,150 @@
+<div class="headline">
+  <h1>user feedback to your inbox for free</h1>
+  <h3 class="sub-headline">Don't waste time reading marketing BS. Craft your own feedback widget in 3 minutes below</h3>
+</div>
+
 <%= form_for(resource, :as => resource_name,
   :url => registration_path(resource_name),
   :html => {:id => "sign_up_user"},
   :format => :json,
   :remote => true ) do |f| %>
 
-  <div class="container">
-    <div class="settings" id="msform">
-      <%= f.fields_for :domains, Domain.new do |builder| %>
-        <fieldset>
+  <div class="settings" id="msform">
+    <ul id="progressbar">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <%= f.fields_for :domains, Domain.new do |builder| %>
+      <fieldset>
+        <h3>Widget Type</h3>
+        <div class="pick-form-style radio-card chosen">
           <%= builder.radio_button(:content_type, "mult-choice", :checked => true, :id => "multiple_choice") %>
-          <label for="multiple_choice">Multiple Choice</label><br>
+          <i class="fa fa-2x fa-list-ul"></i>
+          <label for="multiple_choice">Multiple Choice</label>
+        </div>
 
+        <div class="pick-form-style radio-card">
           <%= builder.radio_button(:content_type, "free-form", :id => "free_form") %>
-          <label for="free_form">Free Form</label>
-        </fieldset>
+          <i class="fa fa-2x fa-align-left"></i>
+          <label for="free_form">Text Input</label>
+        </div>
 
-        <fieldset>
-          <%= builder.radio_button(:tint, "dark", id: 'turn_dark', :class => 'theme-choose', :checked => true) %>
-          <label for="turn_dark">Dark</label><br>
+        <span class="next button primary">Next</span>
+      </fieldset>
 
-          <%= builder.radio_button(:tint, "light", id: 'turn_light', :class => 'theme-choose') %>
+      <fieldset>
+        <h3>Color</h3>
+        <div class="radio-card theme-choose chosen dark-theme">
+          <%= builder.radio_button(:tint, "dark", id: 'turn_dark', :checked => true) %>
+          <label for="turn_dark">Dark</label>
+        </div>
+        <div class="radio-card theme-choose">
+          <%= builder.radio_button(:tint, "light", id: 'turn_light') %>
           <label for="turn_light">Light</label>
-        </fieldset>
+        </div>
 
-        <fieldset>
-          <%= builder.text_field :title, :id => "headline_text", :class => "headline-text" %>
-          <%= builder.label :title %><br>
+        <span class="button previous secondary">Back</span>
+        <span class="next button primary">Next</span>
+      </fieldset>
 
-          <%= builder.text_field :field_1, :class => "email-text", :id => "email_text" %>
+      <fieldset>
+        <h3>Content</h3>
+        <%= builder.label :title %><br>
+        <%= builder.text_field :title, :id => "headline_text", :class => "headline-text", :required => true %>
+
+        <div class="free-form">
           <%= builder.label :field_1, "Input Field" %><br>
+          <%= builder.text_field :field_1, :class => "email-text", :id => "email_text" %>
 
-          <%= builder.text_field :field_2, :class => "body-text", :id => "body_text" %>
           <%= builder.label :field_2, "Text field" %><br>
-
-          <%= builder.text_field :question_1 %>
-          <%= builder.label :question_1, "Question 1" %><br>
-
-          <%= builder.text_field :question_2 %>
-          <%= builder.label :question_2, "Question 2" %><br>
-
-          <%= builder.text_field :question_3 %>
-          <%= builder.label :question_3, "Question 3" %><br>
-
-          <%= builder.text_field :question_4 %>
-          <%= builder.label :question_4, "Question 4" %><br>
-        </fieldset>
-
-        <fieldset>
-          <div class="determine-display">
-            <%= builder.radio_button(:display, true, :checked => true, :id => 'yes-display') %>
-            <label for="yes-display">Show on load</label><br>
-
-            <%= builder.radio_button(:display, false, :id => 'no-hide') %>
-            <label for="no-hide">Hide on load</label>
+          <%= builder.text_field :field_2, :class => "body-text", :id => "body_text" %>
+        </div>
+        <div class="questionnaire">
+          <div class="field">
+            <%= builder.label :question_1, "Choice 1" %><br>
+            <%= builder.text_field :question_1, :class => "1-changer", placeholder: "Green" %>
           </div>
-        </fieldset>
+          <div class="field">
+            <%= builder.label :question_2, "Choice 2" %><br>
+            <%= builder.text_field :question_2, :class => "2-changer", placeholder: "Red" %>
+          </div>
 
-        <fieldset>
-          <%= builder.text_field :url, :class => "user-domain", :required => true %>
-          <%= builder.label :url, "Name your widget" %><br>
+          <div class="field">
+            <%= builder.label :question_3, "Choice 3" %>
+            <span class="remove-field">remove</span>
+            <span class="show-field" style="display: none;">show again</span>
+            <%= builder.text_field :question_3, :class => "3-changer", placeholder: "Blue" %>
+          </div>
 
-          <%= f.email_field :email, :class => "user-email", :required => true %>
-          <%= f.label :email %><br>
+          <div class="field">
+            <%= builder.label :question_4, "Choice 4" %>
+            <span class="remove-field">remove</span>
+            <span class="show-field" style="display: none;">show again</span>
+            <%= builder.text_field :question_4, :class => "4-changer", placeholder: "Orange" %>
+          </div>
+        </div>
 
-          <%= f.password_field :password, :class => "user-pw", :required => true %>
-          <%= f.label :password %><br>
+        <span class="previous button secondary">Back</span>
+        <span class="next button primary">Next</span>
+      </fieldset>
 
-          <%= f.password_field :password_confirmation, :class => "user-confirm", :required => true %>
-          <%= f.label :password_confirmation %><br>
-        </fieldset>
-      <% end %>
-    </div>
+      <fieldset>
+        <h3>Display on load</h3>
+        <div class="radio-card determine-display chosen">
+          <%= builder.radio_button(:display, true, :checked => true, :id => 'yes-display') %>
+          <i class="fa fa-2x fa-angle-up"></i>
+          <label for="yes-display">Show entire form</label>
+          <!-- <p>pro: results in much greater engagement. con: can be a distracting user experience</p> -->
+        </div>
+        <div class="radio-card determine-display">
+          <%= builder.radio_button(:display, false, :id => 'no-hide') %>
+          <i class="fa fa-2x fa-angle-down"></i>
+          <label for="no-hide">Show only the title</label>
+          <!-- <p>(Users submit roughly 2% of the time)</p> -->
+        </div>
+
+        <span type="button" class="previous button secondary">Back</span>
+        <span class="next button primary" onclick="$('#user_new').show()">Next</span>
+      </fieldset>
+
+      <fieldset>
+        <h3>Finish Up</h3>
+        <%= builder.label :url, "Name your widget" %><br>
+        <%= builder.text_field :url, :class => "user-domain", :required => true %>
+
+        <%= f.label :email %><br>
+        <%= f.email_field :email, :class => "user-email", :required => true %>
+
+        <%= f.label :password %><br>
+        <%= f.password_field :password, :class => "user-pw", :required => true %>
+
+        <%= f.label :password_confirmation %><br>
+        <%= f.password_field :password_confirmation, :class => "user-confirm", :required => true %>
+
+        <span class="previous button secondary" onclick="$('#user_new').hide()">Back</span>
+      </fieldset>
+    <% end %>
+    <%= f.submit "code me now!", :id => "user_new", :class => "action-button button large success", :data => { :disable_with => 'processing...'} %>
   </div>
-
-  <%= f.submit "finish", :id => "user_new", :class => "action-button ui green button" %>
 
 <% end %>
 
-<div class="platform"></div>
+<div class="platform">
+  <i class="arrow-icon"></i>
+</div>
+
+
+
+<%= render 'more_info' %>
+
+
+<div id="code-container"></div>
+<a href="#code-container" style="visibility: hidden;" id="go">go</a>
+
+<%= render 'embeds/widget_css' %>
 
 <% content_for :js do %>
   <%= javascript_include_tag 'slider' %>

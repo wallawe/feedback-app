@@ -1,0 +1,19 @@
+<h3>User</h3>
+<p>Email: <%= @user.email if @user.email %></p>
+
+<%= link_to 'Edit account', edit_user_registration_path %>
+
+<hr>
+<ul>
+  <% @user.domains.each do |f| %>
+    <li>
+      <%= f.url %> |
+      <%= link_to "See all feedback", domain_comments_path(f) %> |
+      <%= link_to "edit domain", edit_domain_path(f) %>
+      <br />
+      <code><%= f.embed_code(f.id) %></code>
+    </li>
+  <% end %>
+</ul>
+
+<script src="http://localhost:7000/embeds/36.js"></script>

@@ -1,4 +1,5 @@
-<h1>Listing Comments</h1>
+<h2><%= @domain.url %></h2>
+<h4><%= @domain.title %></h4>
 
 <table>
   <thead>
@@ -13,7 +14,7 @@
     <% @domain.comments.each do |comment| %>
       <tr>
         <td><%= comment.url %></td>
-        <td><%= comment.email %>
+        <td><%= comment.email %></td>
         <td><%= comment.feedback %></td>
       </tr>
     <% end %>

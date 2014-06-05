@@ -14,3 +14,10 @@
 //= require jquery_ui
 //= require jquery_ujs
 //= require_tree ../../../vendor/assets/javascripts/.
+
+
+// $(function() {
+//   $('.new_user').submit(function(e){
+
+//   })
+// })

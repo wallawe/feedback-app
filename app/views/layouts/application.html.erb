@@ -5,6 +5,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Feedback App" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Feedback App" %>">
 
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>

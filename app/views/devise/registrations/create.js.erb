@@ -4,11 +4,15 @@
 
 var domainId = "<%= @user.domains.last.id %>";
 
-//reload top nav now that they are logged in
-$(".nav").html("<%= escape_javascript(render(:partial => "layouts/navigation"))%>");
-
 // append script tag onto div
 displayCode(domainId);
 
 // show the modal
-$('.ui.modal').modal('show');
+$("#go").click();
+
+//reload top nav now that they are logged in, clear creation form
+$(".nav").html("<%= escape_javascript(render(:partial => "layouts/navigation"))%>");
+$(".settings").hide();
+$(".platform").hide();
+$(".headline").hide();
+$(".highlights").css('margin-top','30px');

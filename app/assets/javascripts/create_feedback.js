@@ -1,3 +1,8 @@
+$("#go").leanModal({
+  overlay: 0.7,
+  closeButton: ".modal-close"
+});
+
 $('.headline-text').on('keyup', function(){
   var headlineText = $(this).val();
   $('p.action-call').text(headlineText);
@@ -43,9 +48,13 @@ $('#font_choices').change(function(){
 
 $('.determine-display').on('click',function() {
   if ( document.getElementById('yes-display').checked ) {
-    $('#feedback_form_0243').css('display','block')
+    $('#demo_form').css('display','block');
+    $('.determine-display').removeClass('chosen');
+    $(this).addClass('chosen');
   } else if ( document.getElementById('no-hide').checked ) {
-    $('#feedback_form_0243').css('display','none')
+    $('#demo_form').css('display','none');
+    $('.determine-display').removeClass('chosen');
+    $(this).addClass('chosen');
   }
 });
 
@@ -53,9 +62,70 @@ $('.theme-choose').on('click', function() {
   if ( document.getElementById('turn_dark').checked ) {
     $('.feedback-container').removeClass('light');
     $('.feedback-container').addClass('dark');
+    $('.theme-choose').removeClass('chosen');
+    $(this).addClass('chosen');
   } else if (document.getElementById('turn_light').checked ) {
     $('.feedback-container').addClass('light');
     $('.feedback-container').removeClass('dark');
+    $('.theme-choose').removeClass('chosen');
+    $(this).addClass('chosen');
+  }
+});
+
+$('.pick-form-style').on('click', function() {
+  if ( document.getElementById('multiple_choice').checked ) {
+    $('.free-form').hide();
+    $('.questionnaire').show();
+    $('.pick-form-style').removeClass('chosen');
+    $(this).addClass('chosen');
+
+  } else if (document.getElementById('free_form').checked ) {
+    $('.free-form').show();
+    $('.questionnaire').hide();
+    $('.pick-form-style').removeClass('chosen');
+    $(this).addClass('chosen');
+  }
+});
+
+$('.1-changer').on('keyup', function() {
+  var labelText = $(this).val();
+  $('.choice-1').text(labelText);
+});
+
+$('.2-changer').on('keyup', function() {
+  var labelText = $(this).val();
+  $('.choice-2').text(labelText);
+});
+
+$('.3-changer').on('keyup', function() {
+  var labelText = $(this).val();
+  $('.choice-3').text(labelText);
+});
+
+$('.4-changer').on('keyup', function() {
+  var labelText = $(this).val();
+  $('.choice-4').text(labelText);
+});
+
+$('.remove-field').click(function(){
+  $(this).parent('.field').find('input').hide();
+  $(this).toggle();
+  $(this).next('.show-field').show();
+  if ( $(this).parent('.field').find('input').hasClass('3-changer') ) {
+    $('._3q').hide();
+  } else if ( $(this).parent('.field').find('input').hasClass('4-changer') ) {
+    $('._4q').hide();
+  }
+});
+
+$('.show-field').click(function(){
+  $(this).parent('.field').find('input').show();
+  $(this).toggle();
+  $(this).prev('.remove-field').show();
+  if ( $(this).parent('.field').find('input').hasClass('3-changer') ) {
+    $('._3q').show();
+  } else if ( $(this).parent('.field').find('input').hasClass('4-changer') ) {
+    $('._4q').show();
   }
 })
 
@@ -100,15 +170,15 @@ var replaceWithEntities = function(str) {
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&# 39;');
 }
 
-var displayCode = function(domain) {
-  $('.code-container').empty();
+var displayCode = function(domain, userPath) {
+  $('#code-container').empty();
   // var containerJs = $('.feedback-container')[0].outerHTML;
 
   // var markup = replaceWithEntities(containerJs);
 
   // whatever is below the =========== line in widget.js is what should be minified and set to script below
-  // var script = 'var currentUrl=window.location.href;$("#comment_url").val(currentUrl);$(document).on("click",".action-call",function(){$("#feedback_form_0243").slideToggle(100)});var fb_form=$("#feedback_form_0243");fb_form.submit(function(e){$.ajax({type:fb_form.attr("method"),url:fb_form.attr("action"),data:fb_form.serialize(),success:function(){alert("cool, this worked");$(".feedback-container").hide()},error:function(){alert("ALERT! ERROR")}});e.preventDefault()});$(".mock-page").append($html);'
-  $('.code-container').append('&lt;script src="http://localhost:7000/embeds/'+ domain + '.js"&gt;&lt;/script&gt;');
+  // var script = 'var currentUrl=window.location.href;$("#comment_url").val(currentUrl);$(document).on("click",".action-call",function(){$("#demo_form").slideToggle(100)});var fb_form=$("#demo_form");fb_form.submit(function(e){$.ajax({type:fb_form.attr("method"),url:fb_form.attr("action"),data:fb_form.serialize(),success:function(){alert("cool, this worked");$(".feedback-container").hide()},error:function(){alert("ALERT! ERROR")}});e.preventDefault()});$(".mock-page").append($html);'
+  $('#code-container').append('<b>Here&apos;s your code</b><hr><br><code>&lt;script src="http://localhost:7000/embeds/'+ domain + '.js"&gt;&lt;/script&gt;</code><br><a href="javascript:void(0)" class="modal-close pure-button pure-button-primary">Got it</a>');
 }
 
 
