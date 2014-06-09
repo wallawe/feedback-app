@@ -1,6 +1,6 @@
 <div class="headline">
   <h1>user feedback to your inbox for free</h1>
-  <h3 class="sub-headline">Don't waste time reading marketing BS. Craft your own feedback widget in 3 minutes below</h3>
+  <h3 class="sub-headline">Don't waste time reading marketing BS. Craft your feedback or survey tool now in less than a minute.</h3>
 </div>
 
 <%= form_for(resource, :as => resource_name,
@@ -19,7 +19,7 @@
     </ul>
     <%= f.fields_for :domains, Domain.new do |builder| %>
       <fieldset>
-        <h3>Widget Type</h3>
+        <h3>Survey Type</h3>
         <div class="pick-form-style radio-card chosen">
           <%= builder.radio_button(:content_type, "mult-choice", :checked => true, :id => "multiple_choice") %>
           <i class="fa fa-2x fa-list-ul"></i>
@@ -112,7 +112,7 @@
 
       <fieldset>
         <h3>Finish Up</h3>
-        <%= builder.label :url, "Name your widget" %><br>
+        <%= builder.label :url, "Name your survey" %><br>
         <%= builder.text_field :url, :class => "user-domain", :required => true %>
 
         <%= f.label :email %><br>
@@ -134,6 +134,7 @@
 
 <div class="platform">
   <i class="arrow-icon"></i>
+  <span class="handwritten"></span>
 </div>
 
 
@@ -151,4 +152,6 @@
   <%= javascript_include_tag 'create_feedback' %>
   <%= javascript_include_tag 'widget' %>
 <% end %>
+
+<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
 

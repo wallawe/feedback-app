@@ -1,29 +1,52 @@
 <style type="text/css">
 
-.feedback-container #demo_form.show-display {
+.feedback-container #feedback_form_839224.show-display {
   display: block;
 }
 
-.feedback-container #demo_form.hide-display {
+.feedback-container #feedback_form_839224.hide-display {
   display: none;
 }
 
 .feedback-container.dark {
   background: #333;
   color: #fff;
-  border: 2px solid #fff;
-  border-bottom: 0;
+  border: 0;
 }
 .feedback-container.light {
   background: #f9f9f9;
   color: #333;
-  border: 2px solid #333;
-  border-bottom: 0;
+  border: 0;
+}
+
+.feedback-container #feedback_form_839224 .m_choice {
+  margin: 0 10px 5px 10px;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.feedback-container.light #feedback_form_839224 .m_choice {
+  background-color: #ddd;
+}
+
+.feedback-container.dark #feedback_form_839224 .m_choice {
+  background-color: #454545;
+}
+
+.feedback-container #feedback_form_839224 .m_choice input[type=radio] {
+  width: 5%;
+  vertical-align: top;
+}
+
+.feedback-container #feedback_form_839224 .m_choice label {
+  width: 90%;
+  display: inline-block;
+  font-family: sans-serif, helvetica, arial;
+  cursor: pointer;
 }
 
 .feedback-container {
   width: 320px;
-  padding: 0 20px 10px 20px;
   position: fixed;
   bottom: 0;
   right: 100px;
@@ -37,12 +60,22 @@
 }
 
 .feedback-container p {
+  font-family: sans-serif, helvetica, arial;
   margin: 0;
   cursor: pointer;
   text-align: center;
   font-size: 15px;
-  padding: 10px 10px 0px 10px;
+  padding: 10px;
 }
+
+.feedback-container.light p {
+  color: #333;
+}
+
+.feedback-container.dark p {
+  color: #fff;
+}
+
 .feedback-container .minus {
   position: absolute;
   top: 10px;
@@ -54,8 +87,8 @@
   line-height: 15px;
 }
 .feedback-container .interactive {
-  margin-top: 10px;
-  width: 100%;
+  margin: 10px auto;
+  width: 290px;
   display: block;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -63,7 +96,7 @@
   font-size: 14px;
   border-radius: 3px;
   -moz-border-radius: 3px;
-  font-family: 'Lucida Grande', sans-serif, helvetica, arial;
+  font-family: sans-serif, helvetica, arial;
   color: #404040;
   border: 1px solid #bbb;
   outline: none;
@@ -75,6 +108,15 @@
   cursor: pointer;
   display: inline-block;
   width: auto;
+  margin-left: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
+.feedback-container .submit-button:hover {
+  background: #ddd;
+}
+.feedback-container .submit-button:active {
+  box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.29);
+}
 </style>

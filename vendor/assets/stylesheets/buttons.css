@@ -7,11 +7,12 @@
     padding: 9px 25px;
     font-weight: 400;
     font-size: 17px;
-    color: #fff;
+    color: #404040;
     text-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0;
     border: 0px;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
     background: transparent;
 }
 
@@ -30,6 +31,7 @@
 }
 
 .primary {
+    color: #fff;
     background-color: #4589E3;
     background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5da4ff), color-stop(100%, #417bff));
     background: -webkit-linear-gradient(#5da4ff, #417bff);

@@ -3,7 +3,10 @@
 // ================================================
 
 .feedback-container {
-
   -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(38%, transparent), to(rgba(255,255,255,0.2)));
   position: absolute !important;
+}
+
+.demo_form .submit-button {
+  cursor: not-allowed !important;
 }

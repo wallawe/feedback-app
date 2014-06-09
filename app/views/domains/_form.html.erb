@@ -2,20 +2,132 @@
   <% if @domain.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@domain.errors.count, "error") %> prohibited this domain from being saved:</h2>
-
       <ul>
-      <% @domain.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @domain.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="settings" id="msform">
+    <ul id="progressbar">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <fieldset>
+      <h3>Survey Type</h3>
+      <div class="pick-form-style radio-card">
+        <%= f.radio_button(:content_type, "mult-choice", :id => "multiple_choice") %>
+        <i class="fa fa-2x fa-list-ul"></i>
+        <label for="multiple_choice">Multiple Choice</label>
+      </div>
+
+      <div class="pick-form-style radio-card">
+        <%= f.radio_button(:content_type, "free-form", :id => "free_form") %>
+        <i class="fa fa-2x fa-align-left"></i>
+        <label for="free_form">Text Input</label>
+      </div>
+
+      <span class="next button primary">Next</span>
+    </fieldset>
+
+    <fieldset>
+      <h3>Color</h3>
+      <div class="radio-card theme-choose dark-theme">
+        <%= f.radio_button(:tint, "dark", id: 'turn_dark') %>
+        <label for="turn_dark">Dark</label>
+      </div>
+      <div class="radio-card theme-choose">
+        <%= f.radio_button(:tint, "light", id: 'turn_light') %>
+        <label for="turn_light">Light</label>
+      </div>
+
+      <span class="button previous secondary">Back</span>
+      <span class="next button primary">Next</span>
+    </fieldset>
+
+    <fieldset>
+      <h3>Content</h3>
+      <%= f.label :title %><br>
+      <%= f.text_field :title, :id => "headline_text", :class => "headline-text", :required => true %>
+
+      <div class="free-form">
+        <%= f.label :field_1, "Input Field" %><br>
+        <%= f.text_field :field_1, :class => "email-text", :id => "email_text" %>
+
+        <%= f.label :field_2, "Text field" %><br>
+        <%= f.text_field :field_2, :class => "body-text", :id => "body_text" %>
+      </div>
+      <div class="questionnaire">
+        <div class="field">
+          <%= f.label :question_1, "Choice 1" %><br>
+          <%= f.text_field :question_1, :class => "1-changer", placeholder: "Green" %>
+        </div>
+        <div class="field">
+          <%= f.label :question_2, "Choice 2" %><br>
+          <%= f.text_field :question_2, :class => "2-changer", placeholder: "Red" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :question_3, "Choice 3" %>
+          <span class="remove-field">remove</span>
+          <span class="show-field" style="display: none;">show again</span>
+          <%= f.text_field :question_3, :class => "3-changer", placeholder: "Blue" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :question_4, "Choice 4" %>
+          <span class="remove-field">remove</span>
+          <span class="show-field" style="display: none;">show again</span>
+          <%= f.text_field :question_4, :class => "4-changer", placeholder: "Orange" %>
+        </div>
+      </div>
+
+      <span class="previous button secondary">Back</span>
+      <span class="next button primary">Next</span>
+    </fieldset>
+
+    <fieldset>
+      <h3>Display on load</h3>
+      <div class="radio-card determine-display chosen">
+        <%= f.radio_button(:display, true, :id => 'yes-display') %>
+        <i class="fa fa-2x fa-angle-up"></i>
+        <label for="yes-display">Show entire form</label>
+        <!-- <p>pro: results in much greater engagement. con: can be a distracting user experience</p> -->
+      </div>
+      <div class="radio-card determine-display">
+        <%= f.radio_button(:display, false, :id => 'no-hide') %>
+        <i class="fa fa-2x fa-angle-down"></i>
+        <label for="no-hide">Show only the title</label>
+        <!-- <p>(Users submit roughly 2% of the time)</p> -->
+      </div>
+
+      <span type="button" class="previous button secondary">Back</span>
+      <span class="next button primary" onclick="$('#user_new').show()">Next</span>
+    </fieldset>
+
+    <fieldset>
+      <h3>Finish Up</h3>
+      <%= f.label :url, "Name your survey" %><br>
+      <%= f.text_field :url, :class => "user-domain", :required => true %>
+
+      <span class="previous button secondary">Back</span>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    </fieldset>
   </div>
 <% end %>
+
+<%= render 'embeds/widget_css' %>
+
+<% content_for :js do %>
+  <%= javascript_include_tag 'slider' %>
+  <%= javascript_include_tag 'create_feedback' %>
+  <%= javascript_include_tag 'widget' %>
+<% end %>
+

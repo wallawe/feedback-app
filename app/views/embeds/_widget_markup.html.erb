@@ -18,18 +18,25 @@
       type="hidden">
 
   <% if @domain.content_type == "mult-choice" %>
-
-    <input type="radio" id="question_1" name="comment[feedback]" value="<%= @domain.question_1 %>">
-    <label for="question_1"><%= @domain.question_1 %></label>
-    <input type="radio" id="question_2" name="comment[feedback]" value="<%= @domain.question_2 %>">
-    <label for="question_2"><%= @domain.question_2 %></label>
+    <div class="m_choice">
+      <input type="radio" id="question_1" name="comment[feedback]" value="<%= @domain.question_1 %>">
+      <label for="question_1"><%= @domain.question_1 %></label>
+    </div>
+    <div class="m_choice">
+      <input type="radio" id="question_2" name="comment[feedback]" value="<%= @domain.question_2 %>">
+      <label for="question_2"><%= @domain.question_2 %></label>
+    </div>
     <% unless @domain.question_3.blank? %>
-      <input type="radio" id="question_3" name="comment[feedback]" value="<%= @domain.question_3 %>">
-      <label for="question_3"><%= @domain.question_3 %></label>
+      <div class="m_choice">
+        <input type="radio" id="question_3" name="comment[feedback]" value="<%= @domain.question_3 %>">
+        <label for="question_3"><%= @domain.question_3 %></label>
+      </div>
     <% end %>
     <% unless @domain.question_4.blank? %>
-      <input type="radio" id="question_4" name="comment[feedback]" value="<%= @domain.question_4 %>">
-      <label for="question_4"><%= @domain.question_4 %></label>
+      <div class="m_choice">
+        <input type="radio" id="question_4" name="comment[feedback]" value="<%= @domain.question_4 %>">
+        <label for="question_4"><%= @domain.question_4 %></label>
+      </div>
     <% end %>
 
   <% else %>

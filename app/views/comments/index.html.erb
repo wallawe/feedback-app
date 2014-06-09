@@ -1,22 +1,45 @@
-<h2><%= @domain.url %></h2>
-<h4><%= @domain.title %></h4>
+<%= link_to "back to my account", user_path(current_user) %>
 
-<table>
-  <thead>
+<div class="stats">
+  <section>
+    <h3><%= @domain.url %></h3>
+    Dig in more below
+  </section>
+  <section>
+    <h3><%= @domain.comments.all.count %></h3>
+    Total Submissions
+  </section>
+  <section>
+    <h3><%= time_ago_in_words(@domain.created_at) %></h3>
+    This survey has been active</dh1>
+  </section>
+</div>
+
+<div class="table">
+  <table>
     <tr>
-      <th>Url</th>
-      <th>Email</th>
-      <th>Feedback</th>
+      <td></td>
+      <td>Submitted on</td>
+      <td>Page</td>
+      <td>Email</td>
+      <td><%= @domain.title %></td>
     </tr>
-  </thead>
-
-  <tbody>
+    <% comment_number = 0 %>
     <% @domain.comments.each do |comment| %>
+      <% comment_number += 1 %>
       <tr>
+        <td><%= comment_number %></td>
+        <td><%= I18n.l comment.created_at, :format => :short %></td>
         <td><%= comment.url %></td>
-        <td><%= comment.email %></td>
+        <td><%= field_display(comment) %></td>
         <td><%= comment.feedback %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  </table>
+</div>
+
+<%= link_to "Create a new survey", new_domain_path, :class => 'button success' %>
+<%= link_to "Edit this survey", edit_domain_path(@domain), :class => 'button' %>
+
+
+<script src="http://localhost:7000/embeds/<%= @domain.id %>.js"></script>

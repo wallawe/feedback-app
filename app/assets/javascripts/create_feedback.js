@@ -48,15 +48,20 @@ $('#font_choices').change(function(){
 
 $('.determine-display').on('click',function() {
   if ( document.getElementById('yes-display').checked ) {
-    $('#demo_form').css('display','block');
+    $('.demo_form').css('display','block');
     $('.determine-display').removeClass('chosen');
     $(this).addClass('chosen');
   } else if ( document.getElementById('no-hide').checked ) {
-    $('#demo_form').css('display','none');
+    $('.demo_form').css('display','none');
     $('.determine-display').removeClass('chosen');
     $(this).addClass('chosen');
   }
 });
+
+$('.user-domain').on('keyup', function(){
+  var widgetName = $(this).val();
+  $('.handwritten').text(widgetName);
+})
 
 $('.theme-choose').on('click', function() {
   if ( document.getElementById('turn_dark').checked ) {
@@ -177,8 +182,8 @@ var displayCode = function(domain, userPath) {
   // var markup = replaceWithEntities(containerJs);
 
   // whatever is below the =========== line in widget.js is what should be minified and set to script below
-  // var script = 'var currentUrl=window.location.href;$("#comment_url").val(currentUrl);$(document).on("click",".action-call",function(){$("#demo_form").slideToggle(100)});var fb_form=$("#demo_form");fb_form.submit(function(e){$.ajax({type:fb_form.attr("method"),url:fb_form.attr("action"),data:fb_form.serialize(),success:function(){alert("cool, this worked");$(".feedback-container").hide()},error:function(){alert("ALERT! ERROR")}});e.preventDefault()});$(".mock-page").append($html);'
-  $('#code-container').append('<b>Here&apos;s your code</b><hr><br><code>&lt;script src="http://localhost:7000/embeds/'+ domain + '.js"&gt;&lt;/script&gt;</code><br><a href="javascript:void(0)" class="modal-close pure-button pure-button-primary">Got it</a>');
+  // var script = 'var currentUrl=window.location.href;$("#comment_url").val(currentUrl);$(document).on("click",".action-call",function(){$(".demo_form").slideToggle(100)});var fb_form=$(".demo_form");fb_form.submit(function(e){$.ajax({type:fb_form.attr("method"),url:fb_form.attr("action"),data:fb_form.serialize(),success:function(){alert("cool, this worked");$(".feedback-container").hide()},error:function(){alert("ALERT! ERROR")}});e.preventDefault()});$(".mock-page").append($html);'
+  $('#code-container').append('<b>Here&apos;s your code</b><hr><br><code>&lt;script type="text/javascript" src="http://localhost:7000/embeds/'+ domain + '.js"&gt;&lt;/script&gt;</code><br><a href="javascript:void(0)" class="modal-close pure-button pure-button-primary">Got it</a>');
 }
 
 
