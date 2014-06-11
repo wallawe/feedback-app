@@ -1,5 +1,4 @@
 module EmbedsHelper
-
   def initial_display(test)
     if test == true
       "show-display"
@@ -7,5 +6,4 @@ module EmbedsHelper
       "hide-display"
     end
   end
-
 end

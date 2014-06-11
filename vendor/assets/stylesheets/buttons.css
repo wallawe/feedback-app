@@ -26,7 +26,7 @@
     outline: 0;
 }
 
-.button:active {
+.button.primary:active, .button.success:active, .button.secondary:active {
     box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.29);
 }
 

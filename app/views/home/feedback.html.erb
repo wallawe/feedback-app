@@ -11,11 +11,7 @@
 
   <div class="settings" id="msform">
     <ul id="progressbar">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <li></li><li></li><li></li><li></li><li></li>
     </ul>
     <%= f.fields_for :domains, Domain.new do |builder| %>
       <fieldset>
@@ -55,7 +51,7 @@
         <%= builder.label :title %><br>
         <%= builder.text_field :title, :id => "headline_text", :class => "headline-text", :required => true %>
 
-        <div class="free-form">
+        <div class="free-form-builder">
           <%= builder.label :field_1, "Input Field" %><br>
           <%= builder.text_field :field_1, :class => "email-text", :id => "email_text" %>
 
@@ -152,6 +148,4 @@
   <%= javascript_include_tag 'create_feedback' %>
   <%= javascript_include_tag 'widget' %>
 <% end %>
-
-<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
 

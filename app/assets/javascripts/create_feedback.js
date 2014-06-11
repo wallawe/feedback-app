@@ -79,18 +79,24 @@ $('.theme-choose').on('click', function() {
 
 $('.pick-form-style').on('click', function() {
   if ( document.getElementById('multiple_choice').checked ) {
+    $('.free-form-builder').hide();
     $('.free-form').hide();
     $('.questionnaire').show();
     $('.pick-form-style').removeClass('chosen');
     $(this).addClass('chosen');
 
   } else if (document.getElementById('free_form').checked ) {
+    $('.free-form-builder').show();
     $('.free-form').show();
     $('.questionnaire').hide();
     $('.pick-form-style').removeClass('chosen');
     $(this).addClass('chosen');
   }
 });
+
+$('input:radio:checked').each(function(){
+  $(this).parent().addClass('chosen');
+})
 
 $('.1-changer').on('keyup', function() {
   var labelText = $(this).val();
@@ -113,7 +119,7 @@ $('.4-changer').on('keyup', function() {
 });
 
 $('.remove-field').click(function(){
-  $(this).parent('.field').find('input').hide();
+  $(this).parent('.field').find('input').val("").hide();
   $(this).toggle();
   $(this).next('.show-field').show();
   if ( $(this).parent('.field').find('input').hasClass('3-changer') ) {
@@ -150,6 +156,8 @@ $(function() {
     }
   })
 });
+
+
 
 $(function() {
   $( "#fRadius-range" ).slider({

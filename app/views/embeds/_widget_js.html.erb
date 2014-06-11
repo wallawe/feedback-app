@@ -1,16 +1,14 @@
-<script>
+<script type="text/javascript">
 
-// Get the url of the page the user is currently on for logging purposes
 var currentUrl = window.location.href;
 $('#comment_url').val(currentUrl);
 
 var fb_form = $('#feedback_form_839224');
-// Show/Hide the widget and plus/minus signs. Should I get rid of the plus sign? gchat only uses minus
+
 $(document).on('click', '.action-call', function(){
   fb_form.slideToggle(100);
 });
 
-// Serialize form and submit it to app via ajax
 fb_form.submit(function(ev) {
   $.ajax({
     type: fb_form.attr('method'),

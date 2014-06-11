@@ -1,0 +1,72 @@
+<div class="feedback-container <%= @domain.tint %>">
+  <p class="action-call"><%= @domain.title %></p>
+  <span class="minus action-call">–</span>
+  <form
+    id="feedback_form_839224"
+    method="post"
+    action="http://localhost:7000/domains/<%= @domain.id%>/comments"
+    name="a_feedback_form"
+    class="<%= initial_display(@domain.display) %> demo_form">
+    <input
+      id="domain_id"
+      name="comment[domain_id]"
+      type="hidden"
+      value="<%= @domain.id %>">
+    <input
+      id="comment_url"
+      name="comment[url]"
+      type="hidden">
+
+    <div class="questionnaire <%= "hide-this" if @domain.content_type == "free-form" %>">
+      <div class="_1q m_choice">
+        <input type="radio" id="question_1" name="comment[feedback]" value="<%= @domain.question_1 %>">
+        <label for="question_1" class="choice-1"><%= @domain.question_1 %></label>
+      </div>
+      <div class="_2q m_choice">
+        <input type="radio" id="question_2" name="comment[feedback]" value="<%= @domain.question_2 %>">
+        <label for="question_2" class="choice-2"><%= @domain.question_2 %></label>
+      </div>
+
+        <div class="_3q m_choice">
+          <input type="radio" id="question_3" name="comment[feedback]" value="<%= @domain.question_3 %>">
+          <label for="question_3" class="choice-3"><%= @domain.question_3 %></label>
+        </div>
+
+
+        <div class="_4q m_choice">
+          <input type="radio" id="question_4" name="comment[feedback]" value="<%= @domain.question_4 %>">
+          <label for="question_4" class="choice-4"><%= @domain.question_4 %></label>
+        </div>
+
+    </div>
+
+    <div class="free-form <%= "hide-this" if @domain.content_type == "mult-choice" %>">
+      <input
+        class="interactive"
+        id="feedback_email"
+        name="comment[email]"
+        placeholder="<%= @domain.field_1 %>"
+        type="text">
+      <textarea
+        class="interactive"
+        id="feedback_text"
+        name="comment[feedback]"
+        placeholder="<%= @domain.field_2 %>"
+        rows="4" required></textarea>
+    </div>
+
+    <input
+      class="interactive submit-button"
+      name="commit"
+      type="submit"
+      value="Submit">
+
+  </form>
+</div>
+
+
+<style type="text/css">
+  .feedback-container {
+    position: absolute;
+  }
+</style>

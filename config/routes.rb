@@ -8,6 +8,7 @@ FeedbackApp::Application.routes.draw do
   root :to => "home#feedback"
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
-  resources :embeds, :only => [:show]
+  resources :embeds, :only => [:show, :demo]
+  get 'embeds/demo/:id' => 'embeds#demo', :as => :demo
 
 end
