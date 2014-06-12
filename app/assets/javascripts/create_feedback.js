@@ -191,7 +191,7 @@ var displayCode = function(domain, userPath) {
 
   // whatever is below the =========== line in widget.js is what should be minified and set to script below
   // var script = 'var currentUrl=window.location.href;$("#comment_url").val(currentUrl);$(document).on("click",".action-call",function(){$(".demo_form").slideToggle(100)});var fb_form=$(".demo_form");fb_form.submit(function(e){$.ajax({type:fb_form.attr("method"),url:fb_form.attr("action"),data:fb_form.serialize(),success:function(){alert("cool, this worked");$(".feedback-container").hide()},error:function(){alert("ALERT! ERROR")}});e.preventDefault()});$(".mock-page").append($html);'
-  $('#code-container').append('<b>Here&apos;s your code</b><hr><br><code>&lt;script type="text/javascript" src="http://localhost:7000/embeds/'+ domain + '.js"&gt;&lt;/script&gt;</code><br><a href="javascript:void(0)" class="modal-close pure-button pure-button-primary">Got it</a>');
+  $('#code-container').append('<b>Here&apos;s your code</b><hr><br><code>&lt;script type="text/javascript" src="'+ url +'/embeds/'+ domain + '.js"&gt;&lt;/script&gt;</code><br><a href="javascript:void(0)" class="modal-close pure-button pure-button-primary">Got it</a>');
 }
 
 

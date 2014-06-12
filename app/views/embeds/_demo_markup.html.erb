@@ -4,7 +4,7 @@
   <form
     id="feedback_form_839224"
     method="post"
-    action="http://localhost:7000/domains/<%= @domain.id%>/comments"
+    action="<%= RAW_URL%>/domains/<%= @domain.id%>/comments"
     name="a_feedback_form"
     class="<%= initial_display(@domain.display) %> demo_form">
     <input
