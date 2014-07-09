@@ -11,14 +11,17 @@
     <%= csrf_meta_tags %>
 
   </head>
-  <body class="<%= controller_name %>-<%= action_name %>">
+  <body class="landing-page">
+    <div class="bg-fill"></div>
     <header class="nav">
       <%= render 'layouts/navigation' %>
     </header>
-    <div role="main" class="wrapper">
+
+    <div class="wrapper">
       <%= render 'layouts/messages' %>
-      <%= yield %>
     </div>
+
+    <%= yield %>
 
     <%= yield :js %>
   </body>

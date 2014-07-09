@@ -1,12 +1,12 @@
-<div class="feedback-container <%= @domain.tint %>">
-  <p class="action-call"><%= @domain.title %></p>
-  <span class="minus action-call">–</span>
+<div class="feedback-container <%= @domain.tint %>" id="widget_<%= @domain.id %>">
+  <p class="action-call" id="_3cl_"><%= @domain.title %><span class="minus">–</span></p>
   <form
     id="feedback_form_839224"
     method="post"
-    action="<%= RAW_URL %>/domains/<%= @domain.id%>/comments"
+    action="<%= RAW_URL %>/domains/<%= @domain.id %>/comments"
     name="a_feedback_form"
-    class="<%= initial_display(@domain.display) %>">
+    class="<%= initial_display(@domain.display) %>"
+    data-form-id="<%= @domain.id %>">
     <input
       id="domain_id"
       name="comment[domain_id]"

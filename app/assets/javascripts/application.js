@@ -16,8 +16,11 @@
 //= require_tree ../../../vendor/assets/javascripts/.
 
 
-// $(function() {
-//   $('.new_user').submit(function(e){
+window.onload = function() {
 
-//   })
-// })
+  $("#init-modal").leanModal({
+    overlay: 0.7,
+    closeButton: ".modal-close"
+  });
+
+}

@@ -1,5 +1,24 @@
 <script type="text/javascript">
 
+window.onload = function(){
+
+//only show form if cookie isn't set. set cookie value as domain.id
+
+
+var domainId = $('#feedback_form_839224').data('form-id');
+
+function createCookie(name, value, days) {
+  var expires;
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toGMTString();
+  } else {
+    expires = "";
+  }
+  document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+}
+
 var currentUrl = window.location.href;
 $('#comment_url').val(currentUrl);
 
@@ -15,6 +34,8 @@ fb_form.submit(function(ev) {
     url: fb_form.attr('action'),
     data: fb_form.serialize(),
     success: function() {
+      createCookie("fbWidget", domainId, 30);
+      //set cookie
       alert('cool, this worked');
       $('.feedback-container').hide();
     },
@@ -26,4 +47,5 @@ fb_form.submit(function(ev) {
 });
 
 
+}
 </script>

@@ -1,9 +1,7 @@
-<%= link_to "back to my account", user_path(current_user) %>
-
 <div class="stats">
   <section>
     <h3><%= @domain.url %></h3>
-    Dig in more below
+    <%= link_to "Edit", edit_domain_path(@domain) %> | <%= link_to "Delete", domain_path(@domain), method: :delete, confirm: "Are you sure?" %>
   </section>
   <section>
     <h3><%= @domain.comments.all.count %></h3>
@@ -15,31 +13,29 @@
   </section>
 </div>
 
-<div class="table">
-  <table>
-    <tr>
-      <td></td>
-      <td>Submitted on</td>
-      <td>Page</td>
-      <td>Email</td>
-      <td><%= @domain.title %></td>
-    </tr>
-    <% comment_number = 0 %>
-    <% @domain.comments.each do |comment| %>
-      <% comment_number += 1 %>
+<% if @domain.comments.count == 0 %>
+  <h3 style="margin: 50px 0;">Nothing here quite yet</h3>
+<% else %>
+  <div class="table">
+    <table>
       <tr>
-        <td><%= comment_number %></td>
-        <td><%= I18n.l comment.created_at, :format => :short %></td>
-        <td><%= comment.url %></td>
-        <td><%= field_display(comment) %></td>
-        <td><%= comment.feedback %></td>
+        <td></td>
+        <td>Submitted on</td>
+        <td>Submitted from</td>
+        <td>Email</td>
+        <td><%= @domain.title %></td>
       </tr>
-    <% end %>
-  </table>
-</div>
-
-<%= link_to "Create a new survey", new_domain_path, :class => 'button success' %>
-<%= link_to "Edit this survey", edit_domain_path(@domain), :class => 'button' %>
-
-
-<script src="<%= RAW_URL %>/embeds/<%= @domain.id %>.js"></script>
+      <% comment_number = 0 %>
+      <% @domain.comments.each do |comment| %>
+        <% comment_number += 1 %>
+        <tr>
+          <td><%= comment_number %></td>
+          <td><%= I18n.l comment.created_at, :format => :short %></td>
+          <td><%= comment.url %></td>
+          <td><%= field_display(comment) %></td>
+          <td><%= comment.feedback %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>

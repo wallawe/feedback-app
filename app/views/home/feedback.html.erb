@@ -1,141 +1,102 @@
-<div class="headline">
-  <h1>user feedback to your inbox for free</h1>
-  <h3 class="sub-headline">Don't waste time reading marketing BS. Craft your feedback or survey tool now in less than a minute.</h3>
-</div>
+<div class ="wrapper">
 
-<%= form_for(resource, :as => resource_name,
-  :url => registration_path(resource_name),
-  :html => {:id => "sign_up_user"},
-  :format => :json,
-  :remote => true ) do |f| %>
-
-  <div class="settings" id="msform">
-    <ul id="progressbar">
-      <li></li><li></li><li></li><li></li><li></li>
-    </ul>
-    <%= f.fields_for :domains, Domain.new do |builder| %>
-      <fieldset>
-        <h3>Survey Type</h3>
-        <div class="pick-form-style radio-card chosen">
-          <%= builder.radio_button(:content_type, "mult-choice", :checked => true, :id => "multiple_choice") %>
-          <i class="fa fa-2x fa-list-ul"></i>
-          <label for="multiple_choice">Multiple Choice</label>
-        </div>
-
-        <div class="pick-form-style radio-card">
-          <%= builder.radio_button(:content_type, "free-form", :id => "free_form") %>
-          <i class="fa fa-2x fa-align-left"></i>
-          <label for="free_form">Text Input</label>
-        </div>
-
-        <span class="next button primary">Next</span>
-      </fieldset>
-
-      <fieldset>
-        <h3>Color</h3>
-        <div class="radio-card theme-choose chosen dark-theme">
-          <%= builder.radio_button(:tint, "dark", id: 'turn_dark', :checked => true) %>
-          <label for="turn_dark">Dark</label>
-        </div>
-        <div class="radio-card theme-choose">
-          <%= builder.radio_button(:tint, "light", id: 'turn_light') %>
-          <label for="turn_light">Light</label>
-        </div>
-
-        <span class="button previous secondary">Back</span>
-        <span class="next button primary">Next</span>
-      </fieldset>
-
-      <fieldset>
-        <h3>Content</h3>
-        <%= builder.label :title %><br>
-        <%= builder.text_field :title, :id => "headline_text", :class => "headline-text", :required => true %>
-
-        <div class="free-form-builder">
-          <%= builder.label :field_1, "Input Field" %><br>
-          <%= builder.text_field :field_1, :class => "email-text", :id => "email_text" %>
-
-          <%= builder.label :field_2, "Text field" %><br>
-          <%= builder.text_field :field_2, :class => "body-text", :id => "body_text" %>
-        </div>
-        <div class="questionnaire">
-          <div class="field">
-            <%= builder.label :question_1, "Choice 1" %><br>
-            <%= builder.text_field :question_1, :class => "1-changer", placeholder: "Green" %>
-          </div>
-          <div class="field">
-            <%= builder.label :question_2, "Choice 2" %><br>
-            <%= builder.text_field :question_2, :class => "2-changer", placeholder: "Red" %>
-          </div>
-
-          <div class="field">
-            <%= builder.label :question_3, "Choice 3" %>
-            <span class="remove-field">remove</span>
-            <span class="show-field" style="display: none;">show again</span>
-            <%= builder.text_field :question_3, :class => "3-changer", placeholder: "Blue" %>
-          </div>
-
-          <div class="field">
-            <%= builder.label :question_4, "Choice 4" %>
-            <span class="remove-field">remove</span>
-            <span class="show-field" style="display: none;">show again</span>
-            <%= builder.text_field :question_4, :class => "4-changer", placeholder: "Orange" %>
-          </div>
-        </div>
-
-        <span class="previous button secondary">Back</span>
-        <span class="next button primary">Next</span>
-      </fieldset>
-
-      <fieldset>
-        <h3>Display on load</h3>
-        <div class="radio-card determine-display chosen">
-          <%= builder.radio_button(:display, true, :checked => true, :id => 'yes-display') %>
-          <i class="fa fa-2x fa-angle-up"></i>
-          <label for="yes-display">Show entire form</label>
-          <!-- <p>pro: results in much greater engagement. con: can be a distracting user experience</p> -->
-        </div>
-        <div class="radio-card determine-display">
-          <%= builder.radio_button(:display, false, :id => 'no-hide') %>
-          <i class="fa fa-2x fa-angle-down"></i>
-          <label for="no-hide">Show only the title</label>
-          <!-- <p>(Users submit roughly 2% of the time)</p> -->
-        </div>
-
-        <span type="button" class="previous button secondary">Back</span>
-        <span class="next button primary" onclick="$('#user_new').show()">Next</span>
-      </fieldset>
-
-      <fieldset>
-        <h3>Finish Up</h3>
-        <%= builder.label :url, "Name your survey" %><br>
-        <%= builder.text_field :url, :class => "user-domain", :required => true %>
-
-        <%= f.label :email %><br>
-        <%= f.email_field :email, :class => "user-email", :required => true %>
-
-        <%= f.label :password %><br>
-        <%= f.password_field :password, :class => "user-pw", :required => true %>
-
-        <%= f.label :password_confirmation %><br>
-        <%= f.password_field :password_confirmation, :class => "user-confirm", :required => true %>
-
-        <span class="previous button secondary" onclick="$('#user_new').hide()">Back</span>
-      </fieldset>
-    <% end %>
-    <%= f.submit "code me now!", :id => "user_new", :class => "action-button button large success", :data => { :disable_with => 'processing...'} %>
+  <div class="headline">
+    <h1>a feedback widget that's actually free</h1>
+    <h3 class="sub-headline">Not "freemium." Free. Create and customize your survey tool now in less than a minute.</h3>
   </div>
+  <% if !current_user %>
+    <%= render 'form' %>
 
-<% end %>
-
-<div class="platform">
-  <i class="arrow-icon"></i>
-  <span class="handwritten"></span>
+    <div class="platform">
+      <i class="arrow-icon"></i>
+      <span class="handwritten"></span>
+    </div>
+    <% else %>
+      <div class="call-to-action-holder">
+        <%= link_to "Create a new survey", new_domain_path, :class => 'button success xlarge' %>
+      </div>
+    <% end %>
 </div>
 
+<div class="info-steps">
+  <div class="wrapper">
+    <%= render 'step_info' %>
+  </div>
+</div>
 
+<section class="comparisons">
+  <div class="wrapper">
+    <h2>Some simple comparisons</h2>
+    <div class="features">
+      <ul>
+        <li>Max # Active Surveys</li>
+        <li>Max # Responses</li>
+        <li>Survey Statistics</li>
+        <!-- <li>Max # Admins</li> -->
+        <li>Support</li>
+        <li>Custom Colors</li>
+        <li>Mobile Support</li>
+        <li>White Labeling</li>
+      </ul>
+    </div>
+    <div class="compare-module">
+      <div class="pricing">
+        <h4 class="company">Qualaroo</h4>
+        <h5 class="cost"><span class="currency">$</span>249<span class="period">/mo</span></h5>
+      </div>
+      <div class="checklist">
+        <ul>
+          <li>Unlimited</li>
+          <li>5,000</li>
+          <li><%= icon('check') %></li>
+          <!-- <li>3</li> -->
+          <li>Email/Phone</li>
+          <li><%= icon('check') %></li>
+          <li><%= icon('check') %></li>
+          <li><%= icon('check') %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="compare-module">
+      <div class="pricing">
+        <h4 class="company">Web Engage</h4>
+        <h5 class="cost"><span class="currency">$</span>249<span class="period">/mo</span></h5>
+      </div>
+      <div class="checklist">
+        <ul>
+          <li>25</li>
+          <li>7,500</li>
+          <li><%= icon('check') %></li>
+          <!-- <li>10</li> -->
+          <li>Email/Phone</li>
+          <li><%= icon('check') %></li>
+          <li><%= icon('check') %></li>
+          <li><%= icon('ban') %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="compare-module">
+      <div class="pricing">
+        <h4 class="company">[Company]</h4>
+        <h5 class="cost"><span class="currency">$</span>0<span class="period">/mo</span></h5><br>
+        <a href="#" class="button success">get started</a>
+      </div>
+      <div class="checklist">
+        <ul>
+          <li>Unlimited</li>
+          <li>Unlimited</li>
+          <li><%= icon('check') %></li>
+          <!-- <li>Unlimited (coming soon)</li> -->
+          <li>Email</li>
+          <li>Black &amp; White</li>
+          <li>Coming Soon</li>
+          <li>Coming Soon</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-<%= render 'more_info' %>
 
 
 <div id="code-container"></div>

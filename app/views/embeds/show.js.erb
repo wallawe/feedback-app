@@ -1,5 +1,13 @@
-document.write("<%= escape_javascript(render(:partial => 'embeds/widget_css')).html_safe %>");
-
-document.write("<%= escape_javascript(render(:partial => 'embeds/widget_markup')).html_safe %>");
-
-document.write("<%= escape_javascript(render(:partial => 'embeds/widget_js')).html_safe %>");
+function loadWidgetScript() {
+  document.write("<%= escape_javascript(render(:partial => 'embeds/widget_js')).html_safe %>");
+}
+if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
+  document.write("<%= escape_javascript(render(:partial => 'embeds/widget_css')).html_safe %>");
+  document.write("<%= escape_javascript(render(:partial => 'embeds/widget_markup')).html_safe %>");
+  if ( window.jQuery ) {
+    loadWidgetScript();
+  } else {
+    document.write("<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>");
+    loadWidgetScript();
+  }
+}

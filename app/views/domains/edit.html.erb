@@ -1,4 +1,4 @@
-<h1>Update</h1>
+<h1 class="page-header">Quick Edit</h1>
 
 <%= form_for(@domain) do |f| %>
   <% if @domain.errors.any? %>
@@ -48,7 +48,7 @@
         <label for="turn_light">Light</label>
       </div>
 
-      <a href="javascript:void(0);" class="button previous secondary">Back</a>
+      <a href="javascript:void(0);" class="button previous">Back</a>
       <a href="javascript:void(0);" class="next button primary">Next</a>
     </fieldset>
 
@@ -58,10 +58,10 @@
       <%= f.text_field :title, :id => "headline_text", :class => "headline-text", :required => true %>
 
       <div class="free-form <%= "hide-this" if @domain.content_type == "mult-choice" %>">
-        <%= f.label :field_1, "Input Field" %><br>
+        <%= f.label :field_1, "First Field" %><br>
         <%= f.text_field :field_1, :class => "email-text", :id => "email_text" %>
 
-        <%= f.label :field_2, "Text field" %><br>
+        <%= f.label :field_2, "Second field" %><br>
         <%= f.text_field :field_2, :class => "body-text", :id => "body_text" %>
       </div>
       <div class="questionnaire <%= "hide-this" if @domain.content_type == "free-form" %>">
@@ -89,7 +89,7 @@
         </div>
       </div>
 
-      <a href="javascript:void(0);" class="previous button secondary">Back</a>
+      <a href="javascript:void(0);" class="previous button">Back</a>
       <a href="javascript:void(0);" class="next button primary">Next</a>
     </fieldset>
 
@@ -108,7 +108,7 @@
         <!-- <p>(Users submit roughly 2% of the time)</p> -->
       </div>
 
-      <a href="javascript:void(0);" class="previous button secondary">Back</a>
+      <a href="javascript:void(0);" class="previous button">Back</a>
       <a href="javascript:void(0);" class="next button primary" onclick="$('#user_new').show()">Next</a>
     </fieldset>
 
@@ -117,7 +117,7 @@
       <%= f.label :url, "Name your survey" %><br>
       <%= f.text_field :url, :class => "user-domain", :required => true %>
 
-      <a href="javascript:void(0);" class="previous button secondary">Back</a>
+      <a href="javascript:void(0);" class="previous button">Back</a>
       <%= f.submit "Submit", :class => "action-button button large success", :id => "domain_new" %>
     </fieldset>
   </div>

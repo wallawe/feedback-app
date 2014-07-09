@@ -1,4 +1,4 @@
-<h1>New Survey</h1>
+<h1 class="page-header">New Survey</h1>
 
 <%= form_for(@domain) do |f| %>
   <% if @domain.errors.any? %>
@@ -45,7 +45,7 @@
         <label for="turn_light">Light</label>
       </div>
 
-      <span class="button previous secondary">Back</span>
+      <span class="button previous">Back</span>
       <span class="next button primary">Next</span>
     </fieldset>
 
@@ -55,10 +55,10 @@
       <%= f.text_field :title, :id => "headline_text", :class => "headline-text", :required => true %>
 
       <div class="free-form-builder">
-        <%= f.label :field_1, "Input Field" %><br>
+        <%= f.label :field_1, "First Field" %><br>
         <%= f.text_field :field_1, :class => "email-text", :id => "email_text" %>
 
-        <%= f.label :field_2, "Text field" %><br>
+        <%= f.label :field_2, "Second Field" %><br>
         <%= f.text_field :field_2, :class => "body-text", :id => "body_text" %>
       </div>
       <div class="questionnaire">
@@ -86,7 +86,7 @@
         </div>
       </div>
 
-      <span class="previous button secondary">Back</span>
+      <span class="previous button">Back</span>
       <span class="next button primary">Next</span>
     </fieldset>
 
@@ -105,7 +105,7 @@
         <!-- <p>(Users submit roughly 2% of the time)</p> -->
       </div>
 
-      <span type="button" class="previous button secondary">Back</span>
+      <span type="button" class="previous button">Back</span>
       <span class="next button primary" onclick="$('#user_new').show()">Next</span>
     </fieldset>
 
@@ -114,7 +114,7 @@
       <%= f.label :url, "Name your survey" %><br>
       <%= f.text_field :url, :class => "user-domain", :required => true %>
 
-      <span class="previous button secondary" onclick="$('#user_new').hide()">Back</span>
+      <span class="previous button" onclick="$('#user_new').hide()">Back</span>
     </fieldset>
 
     <%= f.submit "code me now!", :id => "user_new", :class => "action-button button large success" %>
