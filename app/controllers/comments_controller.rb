@@ -58,12 +58,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def options
-    set_headers
-    # this will send an empty request to the clien with 200 status code (OK, can proceed)
-    render :text => '', :content_type => 'text/plain'
-  end
-
   private
     def set_comment
       @comment = Comment.find(params[:id])

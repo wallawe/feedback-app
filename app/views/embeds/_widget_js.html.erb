@@ -35,8 +35,7 @@ fb_form.submit(function(ev) {
     crossDomain: true,
     data: fb_form.serialize(),
     success: function(data) {
-      createCookie("fbWidget", domainId, 30);
-      console.log(data);
+      //createCookie("fbWidget", domainId, 30);
       //set cookie
       alert('cool, this worked');
       $('.feedback-container').hide();
