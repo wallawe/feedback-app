@@ -32,17 +32,16 @@ fb_form.submit(function(ev) {
   $.ajax({
     type: fb_form.attr('method'),
     url: fb_form.attr('action'),
-    crossDomain: true,
-    dataType: "JSONP",
     data: fb_form.serialize(),
-    success: function() {
+    success: function(data) {
       createCookie("fbWidget", domainId, 30);
+      console.log(data);
       //set cookie
       alert('cool, this worked');
       $('.feedback-container').hide();
     },
-    error: function() {
-      alert('ALERT! ERROR');
+    error: function(data) {
+      console.log(data);
     }
   });
   ev.preventDefault();
