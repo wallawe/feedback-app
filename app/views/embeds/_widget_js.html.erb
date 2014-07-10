@@ -32,6 +32,7 @@ fb_form.submit(function(ev) {
   $.ajax({
     type: fb_form.attr('method'),
     url: fb_form.attr('action'),
+    crossDomain: true,
     data: fb_form.serialize(),
     success: function(data) {
       createCookie("fbWidget", domainId, 30);
