@@ -76,6 +76,13 @@ li {
   padding: 10px;
   margin-bottom: 20px;
 
+  .left-nav, .right-nav {
+    display: inline-block;
+  }
+
+  .right-nav {
+    float: right;
+  }
   li {
     display: inline;
 
@@ -85,6 +92,7 @@ li {
       color: lighten($dark_blue, 20%);
       font-size: 14px;
       text-decoration: none;
+      font-weight: 700;
     }
   }
 }
@@ -92,24 +100,20 @@ li {
 .flash_notice, .flash_alert {
   padding: 8px 35px 8px 14px;
   margin-bottom: 20px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  border: 1px solid #fbeed5;
-  @include rounded(4px);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
+  background: rgba(255,255,255,0.6);
 }
 
 .flash_notice {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #468847;
+  border-left: 4px solid #dff0d8;
+  color: #5BBD72;
 }
 
 .flash_alert {
-  background-color: #f2dede;
-  border-color: #eed3d7;
-  color: #b94a48;
+  border-left: 1px solid #f2dede;
+  color: #E93E3C;
 }
 
 .domains-new, .domains-edit {
@@ -154,7 +158,8 @@ form.homepage-create, form.new_domain, form.edit_domain {
 }
 
 .headline {
-  margin-bottom: 60px;
+  margin-bottom: 80px;
+  margin-top: 40px;
   h1 {
     font-size: 50px;
     margin: 20px auto 0 auto;
@@ -573,6 +578,9 @@ fieldset {
 
     &:before {
       content: counter(surveyList);
+      position: absolute;
+      left: -20px;
+      top: 50px;
     }
 
     .left-col {
@@ -593,9 +601,9 @@ fieldset {
     }
 
     .right-col {
-      width: 20%;
+      width: 28%;
       display: inline-block;
-      float: right;
+      text-align: right;
     }
 
     h3 {
@@ -610,12 +618,12 @@ fieldset {
     }
 
     code {
-      display: block;
+      display: inline-block;
       @include rounded(4px);
       cursor: text;
       border: 1px dashed #ddd;
-      padding: 10px;
-      text-align: center;
+      padding: 10px 30px;
+      margin-top: 20px;
     }
   }
 }
@@ -812,5 +820,23 @@ fieldset {
 
 .page-header {
   border-bottom: 1px solid rgba(255,255,255,0.15);
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  font-size: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.half-width {
+  width: 47%;
+  margin-right: 4%;
+  display: inline-block;
+  &:nth-of-type(2n) {
+    margin-right: 0;
+  }
+
+  p {
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
 }

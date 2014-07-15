@@ -1,7 +1,10 @@
 class HomeController < ApplicationController
-  layout "landing"
 
   def feedback
+    render layout: "landing"
+  end
+
+  def use_cases
   end
 
 end

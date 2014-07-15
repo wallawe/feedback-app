@@ -14,7 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-    sleep 1 if Rails.env.development?
+    sleep 2 if Rails.env.development?
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?

@@ -13,7 +13,9 @@
   </head>
   <body class="<%= controller_name %>-<%= action_name %>">
     <header class="nav">
-      <%= render 'layouts/navigation' %>
+      <div class="wrapper">
+        <%= render 'layouts/navigation' %>
+      </div>
     </header>
     <div role="main" class="wrapper">
       <%= render 'layouts/messages' %>

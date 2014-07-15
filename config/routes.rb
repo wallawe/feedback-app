@@ -4,6 +4,7 @@ FeedbackApp::Application.routes.draw do
     resources :comments
   end
 
+  get 'use_cases' => 'home#use_cases'
   get 'feedback' => 'home#feedback'
   root :to => "home#feedback"
   devise_for :users, :controllers => {:registrations => "registrations"}

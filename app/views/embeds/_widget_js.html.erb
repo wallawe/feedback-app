@@ -2,9 +2,6 @@
 
 window.onload = function(){
 
-//only show form if cookie isn't set. set cookie value as domain.id
-
-
 var domainId = $('#feedback_form_839224').data('form-id');
 
 function createCookie(name, value, days) {
@@ -35,7 +32,7 @@ fb_form.submit(function(ev) {
     crossDomain: true,
     data: fb_form.serialize(),
     success: function(data) {
-      //createCookie("fbWidget", domainId, 30);
+      createCookie("survWidget", domainId, 30);
       //set cookie
       alert('cool, this worked');
       $('.feedback-container').hide();

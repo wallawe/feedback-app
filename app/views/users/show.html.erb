@@ -1,4 +1,4 @@
-<h2 class="page-header">You currently have <%= pluralize(1, 'widget') %></h2>
+<h2 class="page-header">Surveys</h2>
 
 <ul class="survey-list">
   <% @user.domains.each do |f| %>
@@ -8,11 +8,11 @@
         <span><%= f.created_at.strftime("%B %d, %Y") %></span>
         <%= link_to "edit", edit_domain_path(f), :class => "preview-link" %>
         <a href="#modal" id="init-modal" class="preview-link"><%= icon('search') %> preview</a>
-        <code><%= f.embed_code(f.id) %></code>
       </div>
       <div class="right-col">
         <%= link_to "See all feedback", domain_comments_path(f), :class => "button primary" %>
       </div>
+      <code><%= f.embed_code(f.id) %></code>
     </li>
   <% end %>
 </ul>

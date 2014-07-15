@@ -1,11 +1,15 @@
-<ul>
-  <li><%= link_to 'Home', root_path %></li>
-  <% if user_signed_in? %>
-    <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-    <li><%= link_to 'Users', users_path %></li>
+<ul class="left-nav">
+  <li class="logo"><%= link_to 'ZapSurveys (b)', root_path %></li>
+</ul>
+<ul class="right-nav">
+  <% if current_user %>
     <li><%= link_to 'New Survey', new_domain_path %></li>
-    <li><%= link_to 'My Account', current_user %></li>
+    <li><%= link_to 'My Surveys', current_user %></li>
+    <li><%= link_to 'Edit account', edit_user_registration_path %></li>
     <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+    <% if current_user.admin? %>
+      <li><%= link_to '[Users]', users_path %></li>
+    <% end %>
   <% else %>
     <li><%= link_to 'Sign up', new_user_registration_path %></li>
     <li><%= link_to 'Login', new_user_session_path %></li>
