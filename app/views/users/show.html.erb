@@ -7,7 +7,7 @@
         <h3><%= f.url %></h3>
         <span><%= f.created_at.strftime("%B %d, %Y") %></span>
         <%= link_to "edit", edit_domain_path(f), :class => "preview-link" %>
-        <a href="#modal" id="init-modal" class="preview-link"><%= icon('search') %> preview</a>
+        <!--<a href="#modal" id="init-modal" class="preview-link"><%#= icon('search') %> preview</a> -->
       </div>
       <div class="right-col">
         <%= link_to "See all feedback", domain_comments_path(f), :class => "button primary" %>

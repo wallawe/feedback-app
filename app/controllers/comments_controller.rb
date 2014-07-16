@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_filter :set_headers
@@ -21,6 +23,7 @@ class CommentsController < ApplicationController
   def index
     if current_user
       @domain = Domain.find(params[:domain_id])
+      @comments = @domain.comments.all.paginate(:page => params[:page], :per_page => 50)
       require_ownership_or_admin
     else
       redirect_to root_path
