@@ -1,11 +1,17 @@
 class DomainsController < ApplicationController
   before_action :set_domain, only: [:show, :edit, :update, :destroy]
+  before_filter :require_current_user
 
   def index
-    @domains = Domain.all
+    if current_user.admin?
+      @domains = Domain.all
+    else
+      redirect_to root_path
+    end
   end
 
   def show
+    redirect_to root_path unless current_user.id == @domain.user.id
   end
 
   def new
@@ -13,6 +19,7 @@ class DomainsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path unless current_user.id == @domain.user.id
   end
 
   def create
@@ -21,7 +28,7 @@ class DomainsController < ApplicationController
 
     respond_to do |format|
       if @domain.save
-        format.html { redirect_to @domain, notice: 'Success!' }
+        format.html { redirect_to user_path(current_user), notice: 'Your survey was successfully created' }
         format.json { render action: 'show', status: :created, location: @domain }
       else
         format.html { render action: 'new' }
@@ -33,7 +40,7 @@ class DomainsController < ApplicationController
   def update
     respond_to do |format|
       if @domain.update(domain_params)
-        format.html { redirect_to user_path(current_user), notice: 'Successfully updated.' }
+        format.html { redirect_to user_path(current_user), notice: 'Your survey was successfully updated' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

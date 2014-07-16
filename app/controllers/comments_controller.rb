@@ -3,22 +3,6 @@ class CommentsController < ApplicationController
   before_filter :set_headers
   protect_from_forgery with: :null_session
 
-  def index
-    @domain = Domain.find(params[:domain_id])
-    #@comments = Comment.all
-  end
-
-  def show
-  end
-
-  def new
-    @domain = Domain.find(params[:domain_id])
-    @comment = Comment.new
-  end
-
-  def edit
-  end
-
   def create
 
     @comment = Comment.new(comment_params)
@@ -26,39 +10,28 @@ class CommentsController < ApplicationController
     @feedback = @comment.feedback
     @submitter = @comment.email
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to domain_comments_path, notice: 'comment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @comment }
-        #ModelMailer.simple_email_send(@user, @submitter, @feedback).deliver
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      render :nothing => true, :status => 200, :content_type => 'text/html'
+      #ModelMailer.simple_email_send(@user, @submitter, @feedback).deliver
+    else
+      render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
-  def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'comment was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.json { head :no_content }
+  def index
+    if current_user
+      @domain = Domain.find(params[:domain_id])
+      require_ownership_or_admin
+    else
+      redirect_to root_path
     end
   end
 
   private
+    def require_ownership_or_admin
+      redirect_to root_path unless current_user.id == @domain.user.id || current_user.admin?
+    end
+
     def set_comment
       @comment = Comment.find(params[:id])
     end
