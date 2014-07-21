@@ -127,6 +127,13 @@ $('.remove-field').click(function(){
   } else if ( $(this).parent('.field').find('input').hasClass('4-changer') ) {
     $('._4q').hide();
   }
+
+  if ( $(this).parent('.field').find('input').hasClass('email-text') ) {
+    $('._ff1').hide();
+  } else if ( $(this).parent('.field').find('input').hasClass('body-text') ) {
+    $('._ff2').hide();
+  }
+
 });
 
 $('.show-field').click(function(){
@@ -137,6 +144,12 @@ $('.show-field').click(function(){
     $('._3q').show();
   } else if ( $(this).parent('.field').find('input').hasClass('4-changer') ) {
     $('._4q').show();
+  }
+
+  if ( $(this).parent('.field').find('input').hasClass('email-text') ) {
+    $('._ff1').show();
+  } else if ( $(this).parent('.field').find('input').hasClass('body-text') ) {
+    $('._ff2').show();
   }
 })
 
@@ -185,13 +198,10 @@ var replaceWithEntities = function(str) {
 
 var displayCode = function(domain, userPath) {
   $('#code-container').empty();
-  // var containerJs = $('.feedback-container')[0].outerHTML;
-
-  // var markup = replaceWithEntities(containerJs);
 
   // whatever is below the =========== line in widget.js is what should be minified and set to script below
   // var script = 'var currentUrl=window.location.href;$("#comment_url").val(currentUrl);$(document).on("click",".action-call",function(){$(".demo_form").slideToggle(100)});var fb_form=$(".demo_form");fb_form.submit(function(e){$.ajax({type:fb_form.attr("method"),url:fb_form.attr("action"),data:fb_form.serialize(),success:function(){alert("cool, this worked");$(".feedback-container").hide()},error:function(){alert("ALERT! ERROR")}});e.preventDefault()});$(".mock-page").append($html);'
-  $('#code-container').append('<b>Here&apos;s your code</b><hr><br><code>&lt;script type="text/javascript" src="'+ url +'/embeds/'+ domain + '.js"&gt;&lt;/script&gt;</code><br><a href="javascript:void(0)" class="modal-close pure-button pure-button-primary">Got it</a>');
+  $('#code-container').append('<b>Here&apos;s your code</b><p>Copy and paste this into the HTML of each page you want this survey to appear on</p><hr><code>&lt;script type="text/javascript" src="'+ url +'/embeds/'+ domain + '.js"&gt;&lt;/script&gt;</code><hr><a href="/" class="button primary" style="margin-top:10px; float: right;">Got it</a>');
 }
 
 

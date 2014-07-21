@@ -43,38 +43,46 @@
 
       <fieldset>
         <h3>Content</h3>
-        <%= builder.label :title, "Question for your users" %>(examples)<br>
-        <%= builder.text_field :title, :id => "headline_text", :class => "headline-text", :required => true %>
+        <%= builder.label :title, "What do you want to ask your users?" %>
+        <a href="#modal" id="init-modal" class="examples">(examples)</a><br>
+        <%= builder.text_field :title, :id => "headline_text", :class => "headline-text", placeholder: "What do you think of our new design?" %>
 
         <div class="free-form-builder">
-          <%= builder.label :field_1, "First Field" %><br>
-          <%= builder.text_field :field_1, :class => "email-text", :id => "email_text" %>
-
-          <%= builder.label :field_2, "Second Field" %><br>
-          <%= builder.text_field :field_2, :class => "body-text", :id => "body_text" %>
+          <div class="field">
+            <%= builder.label :field_1, "First Field" %>
+            <span class="remove-field">remove</span>
+            <span class="show-field" style="display: none;">show again</span>
+            <%= builder.text_field :field_1, :class => "email-text", :id => "email_text", placeholder: "Email (optional)" %>
+          </div>
+          <div class="field">
+            <%= builder.label :field_2, "Second Field" %>
+            <span class="remove-field">remove</span>
+            <span class="show-field" style="display: none;">show again</span>
+            <%= builder.text_field :field_2, :class => "body-text", :id => "body_text", placeholder: "Let us know" %>
+          </div>
         </div>
         <div class="questionnaire">
           <div class="field">
             <%= builder.label :question_1, "Choice 1" %><br>
-            <%= builder.text_field :question_1, :class => "1-changer", placeholder: "Green" %>
+            <%= builder.text_field :question_1, :class => "1-changer", placeholder: "I love it" %>
           </div>
           <div class="field">
             <%= builder.label :question_2, "Choice 2" %><br>
-            <%= builder.text_field :question_2, :class => "2-changer", placeholder: "Red" %>
+            <%= builder.text_field :question_2, :class => "2-changer", placeholder: "No opinion" %>
           </div>
 
           <div class="field">
             <%= builder.label :question_3, "Choice 3" %>
             <span class="remove-field">remove</span>
             <span class="show-field" style="display: none;">show again</span>
-            <%= builder.text_field :question_3, :class => "3-changer", placeholder: "Blue" %>
+            <%= builder.text_field :question_3, :class => "3-changer", placeholder: "Not a huge fan" %>
           </div>
 
           <div class="field">
             <%= builder.label :question_4, "Choice 4" %>
             <span class="remove-field">remove</span>
             <span class="show-field" style="display: none;">show again</span>
-            <%= builder.text_field :question_4, :class => "4-changer", placeholder: "Orange" %>
+            <%= builder.text_field :question_4, :class => "4-changer", placeholder: "Already time for a redesign" %>
           </div>
         </div>
 

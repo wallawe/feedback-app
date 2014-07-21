@@ -1,0 +1,4 @@
+$('p.error-state').remove();
+<% @errors.each do |msg| %>
+  $('fieldset').prepend('<p class="error-state"><%= msg %></p>');
+<% end %>

@@ -1,8 +1,8 @@
-<div class ="wrapper">
+<div class="wrapper">
 
   <div class="headline">
     <h1>create a survey. get user feedback for free</h1>
-    <h3 class="sub-headline">No "freemium" - just free. Create and customize your survey tool now in less than a minute.</h3>
+    <h3 class="sub-headline">No "freemium" - just free. Create and customize your survey tool now in less than a minute.
   </div>
   <% if !current_user %>
     <%= render 'form' %>
@@ -14,6 +14,7 @@
     <% else %>
       <div class="call-to-action-holder">
         <%= link_to "Create a new survey", new_domain_path, :class => 'button success xlarge' %>
+        <%= link_to "See all surveys", user_path(current_user), :class => 'button left-20 xlarge' %>
       </div>
     <% end %>
 </div>
@@ -24,80 +25,44 @@
   </div>
 </div>
 
-<section class="comparisons">
-  <div class="wrapper">
-    <h2>Some simple comparisons</h2>
-    <div class="features">
-      <ul>
-        <li>Max # Active Surveys</li>
-        <li>Max # Responses</li>
-        <li>Survey Statistics</li>
-        <!-- <li>Max # Admins</li> -->
-        <li>Support</li>
-        <li>Custom Colors</li>
-        <li>Mobile Support</li>
-        <li>White Labeling</li>
-      </ul>
-    </div>
-    <div class="compare-module">
-      <div class="pricing">
-        <h4 class="company">Qualaroo</h4>
-        <h5 class="cost"><span class="currency">$</span>249<span class="period">/mo</span></h5>
-      </div>
-      <div class="checklist">
-        <ul>
-          <li>Unlimited</li>
-          <li>5,000</li>
-          <li><%= icon('check') %></li>
-          <!-- <li>3</li> -->
-          <li>Email/Phone</li>
-          <li><%= icon('check') %></li>
-          <li><%= icon('check') %></li>
-          <li><%= icon('check') %></li>
-        </ul>
-      </div>
-    </div>
-    <div class="compare-module">
-      <div class="pricing">
-        <h4 class="company">Web Engage</h4>
-        <h5 class="cost"><span class="currency">$</span>249<span class="period">/mo</span></h5>
-      </div>
-      <div class="checklist">
-        <ul>
-          <li>25</li>
-          <li>7,500</li>
-          <li><%= icon('check') %></li>
-          <!-- <li>10</li> -->
-          <li>Email/Phone</li>
-          <li><%= icon('check') %></li>
-          <li><%= icon('check') %></li>
-          <li><%= icon('ban') %></li>
-        </ul>
-      </div>
-    </div>
-    <div class="compare-module">
-      <div class="pricing">
-        <h4 class="company">[Company]</h4>
-        <h5 class="cost"><span class="currency">$</span>0<span class="period">/mo</span></h5><br>
-        <a href="#" class="button success">get started</a>
-      </div>
-      <div class="checklist">
-        <ul>
-          <li>Unlimited</li>
-          <li>Unlimited</li>
-          <li><%= icon('check') %></li>
-          <!-- <li>Unlimited (coming soon)</li> -->
-          <li>Email</li>
-          <li>Black &amp; White</li>
-          <li>Coming Soon</li>
-          <li>Coming Soon</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+<%#= render 'price_chart' %>
 
+<div id="modal">
+  <span class="modal-close">x</span>
+  <ul class="example-list">
+    <li>
+      "Questions? Reach out to us by filling out the form and we'll get back to you ASAP"
+    </li>
 
+    <li>
+      "What feature would you like to see built next?"
+    </li>
+
+    <li>
+      "Insert your email here to receive future updates"
+    </li>
+
+    <li>
+      "What do you think about our new design?"
+    </li>
+
+    <li>
+      "Did you find what you were looking for on this page?"
+    </li>
+
+    <li>
+      "Was this article informative?"
+    </li>
+
+    <li>
+      "Did you find our pricing to be clear and transparent?"
+    </li>
+
+    <li>
+      "How likely are you to recommend this site to a friend?"
+    </li>
+  </ul>
+</div>
 
 <div id="code-container"></div>
 <a href="#code-container" style="visibility: hidden;" id="go">go</a>

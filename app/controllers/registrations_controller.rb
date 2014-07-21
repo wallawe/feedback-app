@@ -14,7 +14,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-    sleep 2 if Rails.env.development?
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
@@ -23,7 +22,6 @@ class RegistrationsController < Devise::RegistrationsController
         respond_to do |format|
           format.html { redirect_to users_path, notice: "success" }
           format.js { }
-
         end
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
@@ -32,7 +30,9 @@ class RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
-      render :json => {:success => false}
+      @errors = resource.errors.full_messages
+      render :template => 'devise/registrations/errors'
+      #render :json => {:success => false}
     end
   end
 

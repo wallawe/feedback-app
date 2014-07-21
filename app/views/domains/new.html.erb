@@ -51,38 +51,45 @@
 
     <fieldset>
       <h3>Content</h3>
-      <%= f.label :title, "Question for your users" %><br>
+      <%= f.label :title, "What do you want to ask your users?" %><br>
       <%= f.text_field :title, :id => "headline_text", :class => "headline-text", :required => true %>
 
       <div class="free-form-builder">
-        <%= f.label :field_1, "First Field" %><br>
-        <%= f.text_field :field_1, :class => "email-text", :id => "email_text" %>
-
-        <%= f.label :field_2, "Second Field" %><br>
-        <%= f.text_field :field_2, :class => "body-text", :id => "body_text" %>
+        <div class="field">
+          <%= f.label :field_1, "First Field" %>
+          <span class="remove-field">remove</span>
+          <span class="show-field" style="display: none;">show again</span>
+          <%= f.text_field :field_1, :class => "email-text", :id => "email_text", placeholder: "Email (optional)" %>
+        </div>
+        <div class="field">
+          <%= f.label :field_2, "Second Field" %>
+          <span class="remove-field">remove</span>
+          <span class="show-field" style="display: none;">show again</span>
+          <%= f.text_field :field_2, :class => "body-text", :id => "body_text", placeholder: "Let us know" %>
+        </div>
       </div>
       <div class="questionnaire">
         <div class="field">
           <%= f.label :question_1, "Choice 1" %><br>
-          <%= f.text_field :question_1, :class => "1-changer", placeholder: "Green" %>
+          <%= f.text_field :question_1, :class => "1-changer", placeholder: "I love it" %>
         </div>
         <div class="field">
           <%= f.label :question_2, "Choice 2" %><br>
-          <%= f.text_field :question_2, :class => "2-changer", placeholder: "Red" %>
+          <%= f.text_field :question_2, :class => "2-changer", placeholder: "No opinion" %>
         </div>
 
         <div class="field">
           <%= f.label :question_3, "Choice 3" %>
           <span class="remove-field">remove</span>
           <span class="show-field" style="display: none;">show again</span>
-          <%= f.text_field :question_3, :class => "3-changer", placeholder: "Blue" %>
+          <%= f.text_field :question_3, :class => "3-changer", placeholder: "Not a huge fan" %>
         </div>
 
         <div class="field">
           <%= f.label :question_4, "Choice 4" %>
           <span class="remove-field">remove</span>
           <span class="show-field" style="display: none;">show again</span>
-          <%= f.text_field :question_4, :class => "4-changer", placeholder: "Orange" %>
+          <%= f.text_field :question_4, :class => "4-changer", placeholder: "Already time for a redesign" %>
         </div>
       </div>
 

@@ -40,20 +40,22 @@
     <% end %>
 
   <% else %>
-
-    <input
-      class="interactive"
-      id="feedback_email"
-      name="comment[email]"
-      placeholder="<%= @domain.field_1 %>"
-      type="text">
-    <textarea
-      class="interactive"
-      id="feedback_text"
-      name="comment[feedback]"
-      placeholder="<%= @domain.field_2%>"
-      rows="4" required></textarea>
-
+    <% unless @domain.field_1.blank? %>
+      <input
+        class="interactive"
+        id="feedback_email"
+        name="comment[email]"
+        placeholder="<%= @domain.field_1 %>"
+        type="text">
+    <% end %>
+    <% unless @domain.field_2.blank? %>
+      <textarea
+        class="interactive"
+        id="feedback_text"
+        name="comment[feedback]"
+        placeholder="<%= @domain.field_2 %>"
+        rows="4" required></textarea>
+    <% end %>
   <% end %>
 
     <input

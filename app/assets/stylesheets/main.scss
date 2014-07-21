@@ -8,6 +8,7 @@ $dark_blue_hex: #5e7a9b;
 
 $faint_gray: #f7f8fa;
 $green: #5bbd72;
+$red: #E93E3C;
 
 body {
   font-family: sans-serif,Helvetica, Arial;
@@ -34,6 +35,11 @@ ul {
 
 li {
   list-style: none;
+}
+
+hr {
+  border-top: none;
+  margin: 20px 0;
 }
 
 .wrapper {
@@ -113,7 +119,7 @@ li {
 
 .flash_alert {
   border-left: 1px solid #f2dede;
-  color: #E93E3C;
+  color: $red;
 }
 
 .domains-new, .domains-edit {
@@ -140,7 +146,7 @@ li {
 }
 
 #code-container {
-width: 600px;
+width: 710px;
 padding: 30px;
 display: none;
 background: #FFF;
@@ -340,12 +346,12 @@ fieldset {
   }
 
   input[type=radio] {
-    width: 100%;
-    height: 100%;
+    width: 103%;
+    height: 103%;
     cursor: pointer;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -5px;
+    left: -5px;
     opacity: 0;
   }
 
@@ -659,7 +665,6 @@ fieldset {
 #modal {
   background: #fff;
   width: 500px;
-  margin: 100px auto;
   min-height: 200px;
   display: none;
   position: relative;
@@ -668,14 +673,13 @@ fieldset {
 }
 
 .modal-close {
-  display: inline-block;
+  float: right;
   position: absolute;
-  right: 10px;
-  top: 7px;
-  font-size: 16px;
   font-weight: bold;
+  font-size: 14px;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
-  color: #777;
 }
 
 // ===================
@@ -804,10 +808,14 @@ fieldset {
   }
 }
 
+.examples {
+  font-size: 12px;
+}
+
 .call-to-action-holder {
-  width: 284px;
+  width: 504px;
   margin: 20px auto;
-  background: lighten($dark_blue, 10%);
+  background: rgba(255,255,255,0.5);
   padding: 20px;
   @include rounded(5px);
 }
@@ -833,4 +841,20 @@ fieldset {
     margin-top: 10px;
     margin-bottom: 40px;
   }
+}
+
+.example-list {
+  padding: 0 20px;
+  li {
+    list-style-type: disc;
+    margin: 20px 0;
+    font-size: 16px;
+    font-weight: 300;
+  }
+}
+
+.error-state {
+  margin: 7px 0;
+  color: $red;
+  font-size: 14px;
 }

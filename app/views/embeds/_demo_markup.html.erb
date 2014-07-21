@@ -41,13 +41,13 @@
 
     <div class="free-form <%= "hide-this" if @domain.content_type == "mult-choice" %>">
       <input
-        class="interactive"
+        class="interactive _ff1"
         id="feedback_email"
         name="comment[email]"
         placeholder="<%= @domain.field_1 %>"
         type="text">
       <textarea
-        class="interactive"
+        class="interactive _ff2"
         id="feedback_text"
         name="comment[feedback]"
         placeholder="<%= @domain.field_2 %>"
