@@ -22,7 +22,9 @@
         <td></td>
         <td>Submitted on</td>
         <td>Submitted from</td>
-        <td>Email</td>
+        <% unless @domain.field_1.blank? %>
+          <td><%= @domain.field_1 %></td>
+        <% end %>
         <td><%= @domain.title %></td>
       </tr>
       <% comment_number = 0 %>
@@ -33,7 +35,9 @@
           <td><%= comment.created_at.strftime("%m/%d/%Y") %><br>
             <%= comment.created_at.strftime("at %I:%M%p") %>
           <td><%= comment.url %></td>
-          <td><%= field_display(comment) %></td>
+          <% unless @domain.field_1.blank? %>
+            <td><%= field_display(comment) %></td>
+          <% end %>
           <td><%= comment.feedback %></td>
         </tr>
       <% end %>
@@ -41,4 +45,4 @@
   </div>
 <% end %>
 
-<%= will_paginate @invoices %>
+<%= will_paginate @comments %>

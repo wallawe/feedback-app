@@ -33,9 +33,11 @@ fb_form.submit(function(ev) {
     data: fb_form.serialize(),
     success: function(data) {
       createCookie("survWidget", domainId, 30);
-      //set cookie
-      alert('cool, this worked');
-      $('.feedback-container').hide();
+      $('#feedback_form_839224, .action-call').hide(200);
+      $('.success-notif').show(200);
+      setTimeout(function(){
+        $('.feedback-container').hide();
+      }, 3000);
     },
     error: function(data) {
       console.log(data);
