@@ -813,7 +813,7 @@ fieldset {
 }
 
 .call-to-action-holder {
-  width: 504px;
+  width: 512px;
   margin: 20px auto;
   background: rgba(255,255,255,0.5);
   padding: 20px;
@@ -857,4 +857,16 @@ fieldset {
   margin: 7px 0;
   color: $red;
   font-size: 14px;
+}
+
+blockquote {
+  width: 80%;
+  margin: 100px auto;
+  line-height: 60px;
+  font-size: 38px;
+  font-weight: 300;
+  font-family: georgia;
+  font-style: italic;
+  color: #777;
+  text-align: center;
 }
