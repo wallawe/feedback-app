@@ -23,7 +23,11 @@
           <label for="free_form">Text Input</label>
         </div>
 
-        <span class="next button primary">Next</span>
+        <span
+          class="next button primary"
+          onClick="_gaq.push(['_trackEvent', 'Landing Page', 'Step Clicks', 'Survey Type']);">
+          Next
+        </span>
       </fieldset>
 
       <fieldset>
@@ -38,7 +42,11 @@
         </div>
 
         <span class="button previous">Back</span>
-        <span class="next button primary">Next</span>
+        <span
+          class="next button primary"
+          onClick="_gaq.push(['_trackEvent', 'Landing Page', 'Step Clicks', 'Color']);">
+          Next
+        </span>
       </fieldset>
 
       <fieldset>
@@ -87,7 +95,11 @@
         </div>
 
         <span class="previous button">Back</span>
-        <span class="next button primary">Next</span>
+        <span
+          class="next button primary"
+          onClick="_gaq.push(['_trackEvent', 'Landing Page', 'Step Clicks', 'Content']);">
+          Next
+        </span>
       </fieldset>
 
       <fieldset>
@@ -106,7 +118,11 @@
         </div>
 
         <span type="button" class="previous button">Back</span>
-        <span class="next button primary" onclick="$('#user_new').show()">Next</span>
+        <span
+          class="next button primary"
+          onclick="$('#user_new').show(); _gaq.push(['_trackEvent', 'Landing Page', 'Step Clicks', 'Display on Load']);">
+          Next
+        </span>
       </fieldset>
 
       <fieldset>
@@ -126,7 +142,7 @@
         <span class="previous button" onclick="$('#user_new').hide()">Back</span>
       </fieldset>
     <% end %>
-    <%= f.submit "code me now!", :id => "user_new", :class => "action-button button large success", :data => { :disable_with => 'processing...'} %>
+    <%= f.submit "code me now!", :id => "user_new", :class => "action-button button large success", :data => { :disable_with => 'processing...'}, :onclick => "_gaq.push(['_trackEvent', 'Landing Page', 'Step Clicks', 'Sign up/New Survey']);" %>
   </div>
 
 <% end %>
