@@ -92,6 +92,10 @@ hr {
   li {
     display: inline;
 
+    &.logo a {
+      font-size: 22px;
+    }
+
     a {
       text-transform: uppercase;
       padding: 0 15px;
