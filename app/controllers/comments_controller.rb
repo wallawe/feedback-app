@@ -14,9 +14,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       render :nothing => true, :status => 200, :content_type => 'text/html'
-      #if current_user.admin?
-        #ModelMailer.simple_email_send(@link, @feedback, @user).deliver
-      #end
+      ModelMailer.simple_email_send(@link, @feedback, @user).deliver
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
