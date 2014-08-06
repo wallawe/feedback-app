@@ -1,9 +1,7 @@
-Hi, <%= @user.email %>
+Hey there,
 
-<h3>This is you feedback: </h3>
+We just wanted to let you know you received some feedback:
 
 <p><%= @feedback %><p>
 
-<% unless @submitter.blank? %>
-From: <%= @submitter %>
-<% end %>
+<a href="http://www.freesurveycreator.com/domains/#{@link}/comments">Visit your dashboard to see more</a>

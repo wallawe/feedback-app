@@ -1,11 +1,10 @@
 class ModelMailer < ActionMailer::Base
-  default from: "wallac.will@gmail.com" #This will be from whatever the name of the company ends up being
+  default from: "will@freesurveycreator.com" #This will be from whatever the name of the company ends up being
 
-  def simple_email_send(user, submitter, feedback)
-    @user = user
+  def simple_email_send(link, feedback, user)
+    @link = link
     @feedback = feedback
-    @submitter = submitter
 
-    mail to: user.email, subject: "New feedback"
+    mail to: user.email, subject: "Someone responded to your survey"
   end
 end

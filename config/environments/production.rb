@@ -77,4 +77,14 @@ FeedbackApp::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "freesurveycreator.mailgun.org",
+    :port => 587,
+    :domain => "freesurveycreator.com",
+    :user_name => "postmaster@freesurveycreator.com",
+    :password => "4d68208f9959e3319800aefb5971bbcd"
+  }
 end
