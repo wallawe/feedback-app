@@ -30,6 +30,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @domain = Domain.find(params[:domain_id])
+    require_ownership_or_admin
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to domain_comments_path }
+      format.js
+    end
+  end
+
   private
     def require_ownership_or_admin
       redirect_to root_path unless current_user.id == @domain.user.id || current_user.admin?

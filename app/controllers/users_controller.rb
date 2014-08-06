@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :only => [:show]
+  before_filter :authenticate_user!, :only => [:show, :index]
 
   def index
-    if current_user.admin?
+    if current_user && current_user.admin?
       @users = User.all
     else
       redirect_to root_path
@@ -12,6 +12,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     redirect_to root_path unless @user.id == current_user.id
+  end
+
+  def destroy
+    if current_user && current_user.admin?
+      @user = User.find(params[:id])
+      @user.destroy
+
+      respond_to do |format|
+        format.html { redirect_to users_path }
+      end
+    else
+      redirect_to root_path
+    end
   end
 
 end

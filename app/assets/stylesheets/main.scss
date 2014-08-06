@@ -509,6 +509,7 @@ fieldset {
 
 .table tr td:last-child {
   border-width: 0 0 1px;
+  width: 20px;
 }
 
 .table tr:last-child td:last-child {
@@ -877,4 +878,9 @@ blockquote {
   font-style: italic;
   color: #777;
   text-align: center;
+}
+
+.fa.fa-times {
+  color: $red;
+  font-size: 16px;
 }

@@ -19,19 +19,16 @@
   <div class="table">
     <table>
       <tr>
-        <td></td>
         <td>Submitted on</td>
         <td>Submitted from</td>
         <% unless @domain.field_1.blank? %>
           <td><%= @domain.field_1 %></td>
         <% end %>
         <td><%= @domain.title %></td>
+        <td></td>
       </tr>
-      <% comment_number = 0 %>
       <% @comments.each do |comment| %>
-        <% comment_number += 1 %>
         <tr>
-          <td><%= comment_number %></td>
           <td><%= comment.created_at.strftime("%m/%d/%Y") %><br>
             <%= comment.created_at.strftime("at %I:%M%p") %>
           <td><%= comment.url %></td>
@@ -39,6 +36,11 @@
             <td><%= field_display(comment) %></td>
           <% end %>
           <td><%= comment.feedback %></td>
+          <td>
+            <%= link_to domain_comment_path(@domain.id, comment.id), method: :delete, remote: true, class: "delete-comment", title: "Delete" do %>
+              <%= icon('times') %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </table>

@@ -1,27 +1,9 @@
-<h1>Listing domains</h1>
+<h1>All Surveys (<%= @domains.count %>)</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Url</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% @domains.each do |domain| %>
+    <p>
+      <%= link_to domain.url, domain_comments_path(domain.id) %> |
+      <%= link_to 'Delete', domain, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+<% end %>
 
-  <tbody>
-    <% @domains.each do |domain| %>
-      <tr>
-        <td><%= domain.url %></td>
-        <td><%= link_to 'Show', domain %></td>
-        <td><%= link_to 'Edit', edit_domain_path(domain) %></td>
-        <td><%= link_to 'Destroy', domain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Domain', new_domain_path %>
