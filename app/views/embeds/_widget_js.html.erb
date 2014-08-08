@@ -26,6 +26,7 @@ $(document).on('click', '.action-call', function(){
 });
 
 fb_form.submit(function(ev) {
+  $('#feedback_form_839224, .action-call').hide(200);
   $.ajax({
     type: fb_form.attr('method'),
     url: fb_form.attr('action'),
@@ -33,7 +34,6 @@ fb_form.submit(function(ev) {
     data: fb_form.serialize(),
     success: function(data) {
       createCookie("survWidget", domainId, 30);
-      $('#feedback_form_839224, .action-call').hide(200);
       $('.success-notif').show(200);
       setTimeout(function(){
         $('.feedback-container').hide();

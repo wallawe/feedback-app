@@ -4,7 +4,7 @@ class DomainsController < ApplicationController
 
   def index
     if current_user.admin?
-      @domains = Domain.all
+      @domains = Domain.all.order("created_at asc")
     else
       redirect_to root_path
     end

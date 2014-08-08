@@ -14,7 +14,9 @@ class CommentsController < ApplicationController
 
     if @comment.save
       render :nothing => true, :status => 200, :content_type => 'text/html'
-      #ModelMailer.simple_email_send(@link, @feedback, @user).deliver
+      if [5, 6, 174].include? @link
+        ModelMailer.simple_email_send(@link, @feedback, @user).deliver
+      end
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
