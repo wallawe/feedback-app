@@ -16,6 +16,11 @@ function getCookie(c_name) {
   return "";
 }
 
+function isIE () {
+  var myNav = navigator.userAgent.toLowerCase();
+  return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+}
+
 function loadWidgetScript() {
   document.write("<%= escape_javascript(render(:partial => 'embeds/widget_js')).html_safe %>");
 }
@@ -27,7 +32,7 @@ if ( widgetVal != currentCookie ) {
     if ( window.jQuery ) {
       loadWidgetScript();
     } else {
-      document.write("<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>");
+      document.write("<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>");
       loadWidgetScript();
     }
   }

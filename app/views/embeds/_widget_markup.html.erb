@@ -23,7 +23,7 @@
 
   <% if @domain.content_type == "mult-choice" %>
     <div class="m_choice">
-      <input type="radio" id="question_1" name="comment[feedback]" value="<%= @domain.question_1 %>">
+      <input type="radio" id="question_1" name="comment[feedback]" value="<%= @domain.question_1 %>" required>
       <label for="question_1"><%= @domain.question_1 %></label>
     </div>
     <div class="m_choice">
