@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   def index
     if current_user
       @domain = Domain.find(params[:domain_id])
-      @comments = @domain.comments.all.paginate(:page => params[:page], :per_page => 50)
+      @comments = @domain.comments.all.sort_by { |e| e[:created_at] }.paginate(:page => params[:page], :per_page => 50)
       require_ownership_or_admin
     else
       redirect_to root_path

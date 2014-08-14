@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @surveys = @user.domains.sort_by { |e| e[:created_at] }
     redirect_to root_path unless @user.id == current_user.id || current_user.admin?
   end
 
