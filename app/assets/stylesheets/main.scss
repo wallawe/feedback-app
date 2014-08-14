@@ -190,6 +190,23 @@ form.homepage-create, form.new_domain, form.edit_domain {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
     position:relative;
     text-align: center;
+
+    span {
+      background: #f0f472;
+      padding: 0px 5px;
+      font-size: 12px;
+      text-transform: lowercase;
+      text-shadow: none;
+      color: #454545;
+      font-weight: bold;
+      border-radius: 3px;
+      display: inline-block;
+      line-height: 19px;
+      vertical-align: top;
+      margin-top: 3px;
+      margin-left: 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.6);
+    }
   }
 }
 
