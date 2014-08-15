@@ -1,5 +1,5 @@
 <ul class="left-nav">
-  <li class="logo"><%= link_to 'FSC.', root_path %></li>
+  <li class="logo"><%= link_to 'FSC', root_path %></li>
 </ul>
 <ul class="right-nav">
   <% if current_user %>
@@ -15,5 +15,5 @@
     <li><%= link_to 'Sign up', new_user_registration_path %></li>
     <li><%= link_to 'Login', new_user_session_path %></li>
   <% end %>
-  <li><%= link_to 'FAQ', use_cases_path %></li>
+  <li><%= link_to 'FAQ', faq_path %></li>
 </ul>

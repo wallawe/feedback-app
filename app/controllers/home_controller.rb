@@ -7,4 +7,7 @@ class HomeController < ApplicationController
   def use_cases
   end
 
+  def faq
+  end
+
 end

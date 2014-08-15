@@ -837,9 +837,8 @@ fieldset {
 }
 
 .call-to-action-holder {
-  width: 512px;
+  width: 532px;
   margin: 20px auto;
-  background: rgba(255,255,255,0.5);
   padding: 20px;
   @include rounded(5px);
 }
@@ -853,21 +852,30 @@ fieldset {
   text-align: center;
 }
 
+.static-page-header {
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 20px;
+  font-size: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
 .row {
   margin-bottom: 100px;
 }
 
-.half-width {
-  width: 47%;
-  margin-right: 4%;
-  display: inline-block;
-  &:nth-of-type(2n) {
-    margin-right: 0;
-  }
+.small-column {
+  width: 500px;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 200px;
 
   p {
     margin-top: 10px;
     margin-bottom: 40px;
+    font-weight: 300;
+    color: #666;
   }
 }
 
