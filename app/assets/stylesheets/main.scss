@@ -113,16 +113,16 @@ hr {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.85);
 }
 
 .flash_notice {
-  border-left: 4px solid #dff0d8;
+  border-left: 4px solid #5BBD72;
   color: #5BBD72;
 }
 
 .flash_alert {
-  border-left: 1px solid #f2dede;
+  border-left: 1px solid $red;
   color: $red;
 }
 
