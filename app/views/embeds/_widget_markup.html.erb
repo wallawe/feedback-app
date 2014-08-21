@@ -44,6 +44,21 @@
     <% end %>
 
   <% else %>
+    <% if @domain.field_1.blank? && @domain.field_2.blank? %>
+      <input
+        class="interactive"
+        id="feedback_email"
+        name="comment[email]"
+        placeholder="email (optional)"
+        type="text">
+      <textarea
+        class="interactive"
+        id="feedback_text"
+        name="comment[feedback]"
+        placeholder="Let us know"
+        rows="4" required></textarea>
+    <% end %>
+
     <% unless @domain.field_1.blank? %>
       <input
         class="interactive"
