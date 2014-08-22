@@ -1,5 +1,5 @@
 <h1>All Surveys (<%= @domains.count %>)</h1>
-
+<h3># of Total Comments: <%= @total_responses.count %></h3>
 <% @domains.each do |domain| %>
     <p>
       <%= link_to domain.url, domain_comments_path(domain.id) %> |
