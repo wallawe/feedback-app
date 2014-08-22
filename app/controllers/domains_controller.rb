@@ -11,7 +11,7 @@ class DomainsController < ApplicationController
   end
 
   def show
-    redirect_to root_path unless current_user.id == @domain.user.id
+    redirect_to root_path unless current_user.id == @domain.user.id || current_user.admin?
   end
 
   def new
@@ -19,7 +19,7 @@ class DomainsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path unless current_user.id == @domain.user.id
+    redirect_to root_path unless current_user.id == @domain.user.id || current_user.admin?
   end
 
   def create
@@ -65,6 +65,6 @@ class DomainsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def domain_params
-      params.require(:domain).permit(:url, :user_id, :tint, :content_type, :title, :field_1, :field_2, :question_1, :question_2, :question_3, :question_4, :display)
+      params.require(:domain).permit(:url, :user_id, :tint, :content_type, :title, :field_1, :field_2, :question_1, :question_2, :question_3, :question_4, :display, :has_donated)
     end
 end

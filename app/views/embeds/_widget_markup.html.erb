@@ -83,5 +83,9 @@
       type="submit"
       value="Submit">
 
+    <% unless @domain.has_donated? %>
+      <span class="fsc-logo">made with <a href="http://www.freesurveycreator.com" target="_blank">FSC</a></span>
+    <% end %>
+
   </form>
 </div>

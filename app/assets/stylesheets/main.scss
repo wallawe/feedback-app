@@ -461,6 +461,8 @@ h4.example-link {
   margin-bottom: 20px;
 
   section {
+    vertical-align: top;
+    height: 90px;
     padding: 0 0 10px 0;
     display: inline-block;
     width: 300px;
@@ -612,48 +614,49 @@ h4.example-link {
     counter-increment: surveyList;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.26);
 
-    &:before {
-      content: counter(surveyList);
-      position: absolute;
-      left: -20px;
-      top: 50px;
-    }
-
     .left-col {
       width: 70%;
       display: inline-block;
-
-      .preview-link {
-        float: right;
-        font-size: 12px;
-        line-height: 29px;
-      }
+      vertical-align: top;
     }
 
     .right-col {
       width: 28%;
       display: inline-block;
-      text-align: right;
+
+      .controls {
+        float: right;
+        margin-right: 10px;
+        a {
+          font-size: 14px;
+          line-height: 17px;
+        }
+      }
+
+      span {
+        color: #999;
+        font-size: 12px;
+        color: green;
+        text-transform: uppercase;
+      }
     }
 
     h3 {
       margin: 0 20px 10px 0;
-      display: inline-block;
-    }
-
-    span {
-      color: #9EAEBE;
-      font-size: 14px;
-      text-transform: uppercase;
+      display: block;
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     code {
-      display: inline-block;
+      display: block;
+      margin-top: 10px;
+      text-align: center;
       @include rounded(4px);
       cursor: text;
       border: 1px dashed #ddd;
       padding: 10px 30px;
-      margin-top: 20px;
     }
   }
 }
@@ -858,6 +861,13 @@ h4.example-link {
   text-align: center;
 }
 
+.left-header {
+  font-size: 30px;
+  color: #fff;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
 .static-page-header {
   border-bottom: 1px solid rgba(255,255,255,0.15);
   padding-bottom: 20px;
@@ -916,4 +926,22 @@ blockquote {
 .fa.fa-times {
   color: $red;
   font-size: 16px;
+}
+
+.top-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 245px;
+  background: #343131;
+  z-index: -1;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
 }

@@ -1,7 +1,6 @@
 <div class="stats">
   <section>
     <h3><%= @domain.url %></h3>
-    <%= link_to "Edit", edit_domain_path(@domain) %> | <%= link_to "Delete", domain_path(@domain), method: :delete, confirm: "Are you sure?" %>
   </section>
   <section>
     <h3><%= @domain.comments.all.count %></h3>

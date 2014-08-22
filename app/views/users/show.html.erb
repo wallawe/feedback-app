@@ -1,20 +1,28 @@
-<h2 class="page-header">Surveys</h2>
+<div class="top-banner">
+</div>
+
+<%= link_to "Create a new survey", new_domain_path, :class => 'button success pull-right' %>
+<h2 class="left-header">Surveys</h2>
 
 <ul class="survey-list">
+  <!-- <li>this is a test</li> -->
   <% @surveys.each do |f| %>
     <li>
       <div class="left-col">
-        <h3><%= f.url %></h3>
-        <span><%= f.created_at.strftime("%B %d, %Y") %></span>
-        <%= link_to "edit", edit_domain_path(f), :class => "preview-link" %>
-        <!--<a href="#modal" id="init-modal" class="preview-link"><%#= icon('search') %> preview</a> -->
+        <%= link_to domain_comments_path(f) do %>
+          <h3><%= f.url %> (<span><%= pluralize(f.comments.count, "response") %></span>)</h3>
+        <% end %>
       </div>
       <div class="right-col">
-        <%= link_to "See all feedback", domain_comments_path(f), :class => "button primary" %>
+        <div class="controls">
+          <%= link_to "edit", edit_domain_path(f) %> |
+          <%= link_to "delete", domain_path(f), method: :delete, data: { confirm: "Are you sure?" } %>
+          <% if f.has_donated == true %>
+            <span>*Donated*</span>
+          <% end %>
+        </div>
       </div>
       <code><%= f.embed_code(f.id) %></code>
     </li>
   <% end %>
 </ul>
-
-<%= link_to "Create a new survey", new_domain_path, :class => 'button success bottom-20' %>
