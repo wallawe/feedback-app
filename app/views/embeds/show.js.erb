@@ -1,5 +1,14 @@
 var widgetVal = "<%= @domain.id %>";
 var currentCookie = getCookie("survWidget");
+var currentUrl = window.location.href;
+
+if ( widgetVal != currentCookie && window.atob ) {
+  document.write("<%= escape_javascript(render(:partial => 'embeds/widget_css')).html_safe %>");
+  document.write("<%= escape_javascript(render(:partial => 'embeds/widget_markup')).html_safe %>");
+  window.onload = function() {
+    document.getElementById('comment_url').setAttribute('value', currentUrl);
+  }
+}
 
 function getCookie(c_name) {
   if (document.cookie.length > 0) {
@@ -16,24 +25,60 @@ function getCookie(c_name) {
   return "";
 }
 
-function isIE () {
-  var myNav = navigator.userAgent.toLowerCase();
-  return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
-}
-
-function loadWidgetScript() {
-  document.write("<%= escape_javascript(render(:partial => 'embeds/widget_js')).html_safe %>");
-}
-
-if ( widgetVal != currentCookie ) {
-  if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
-    document.write("<%= escape_javascript(render(:partial => 'embeds/widget_css')).html_safe %>");
-    document.write("<%= escape_javascript(render(:partial => 'embeds/widget_markup')).html_safe %>");
-    if ( window.jQuery ) {
-      loadWidgetScript();
-    } else {
-      document.write("<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>");
-      loadWidgetScript();
-    }
+function createCookie(name, value, days) {
+  var expires;
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toGMTString();
+  } else {
+    expires = "";
   }
+  document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+}
+
+function AJAXSubmit (oFormElement) {
+  if (!oFormElement.action) { return; }
+  var oReq = new XMLHttpRequest();
+  oReq.onload = ajaxSuccess;
+  if (oFormElement.method.toLowerCase() === "post") {
+    oReq.open("post", oFormElement.action, true);
+    oReq.send(new FormData(oFormElement));
+  } else {
+    var oField, sFieldType, nFile, sSearch = "";
+    for (var nItem = 0; nItem < oFormElement.elements.length; nItem++) {
+      oField = oFormElement.elements[nItem];
+      if (!oField.hasAttribute("name")) { continue; }
+      sFieldType = oField.nodeName.toUpperCase() === "INPUT" ? oField.getAttribute("type").toUpperCase() : "TEXT";
+      if (sFieldType === "FILE") {
+        for (nFile = 0; nFile < oField.files.length; sSearch += "&" + escape(oField.name) + "=" + escape(oField.files[nFile++].name));
+      } else if ((sFieldType !== "RADIO" && sFieldType !== "CHECKBOX") || oField.checked) {
+        sSearch += "&" + escape(oField.name) + "=" + escape(oField.value);
+      }
+    }
+    oReq.open("get", oFormElement.action.replace(/(?:\?.*)?$/, sSearch.replace(/^&/, "?")), true);
+    oReq.send(null);
+  }
+}
+
+function hideWidget() {
+  document.getElementById('widget_' + widgetVal).style.display = 'none';
+}
+
+function toggleVisibility(id) {
+   var e = document.getElementById(id);
+   if(e.style.display == 'block') {
+      e.style.display = 'none';
+    }
+   else {
+      e.style.display = 'block';
+    }
+}
+
+function ajaxSuccess () {
+  createCookie("survWidget", widgetVal, 30);
+  document.getElementById('succ_notif_2971').style.display = 'block';
+  document.getElementById('feedback_form_839224').style.display = 'none';
+  document.getElementById('_3cl_').style.display = 'none';
+  setTimeout( function() { hideWidget() }, 2000);
 }

@@ -1,9 +1,5 @@
 module EmbedsHelper
-  def initial_display(test)
-    if test == true
-      "show-display"
-    elsif test == false
-      "hide-display"
-    end
+  def initial_display(element)
+    element == true ? 'block' : 'none'
   end
 end

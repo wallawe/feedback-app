@@ -1,15 +1,16 @@
 <div class="feedback-container <%= @domain.tint %>" id="widget_<%= @domain.id %>">
-  <div class="success-notif" style="display: none;">
+  <div class="success-notif" id="succ_notif_2971" style="display: none;">
     <h3>Awesome</h3>
     <p>Thanks for lending a hand</p>
   </div>
-  <p class="action-call" id="_3cl_"><%= @domain.title %><span class="minus">–</span></p>
+  <p class="action-call" id="_3cl_" onclick="toggleVisibility('feedback_form_839224')"><%= @domain.title %><span class="minus">–</span></p>
   <form
+    enctype="multipart/form-data" onsubmit="AJAXSubmit(this); return false;"
     id="feedback_form_839224"
+    style="display: <%= initial_display(@domain.display) %>"
     method="post"
     action="<%= RAW_URL %>/domains/<%= @domain.id %>/comments"
     name="a_feedback_form"
-    class="<%= initial_display(@domain.display) %>"
     data-form-id="<%= @domain.id %>">
     <input
       id="domain_id"
@@ -77,11 +78,12 @@
     <% end %>
   <% end %>
 
-    <input
+    <button
       class="interactive submit-button"
       name="commit"
-      type="submit"
-      value="Submit">
+      value="Submit"
+      onclick="this.textContent = 'Submitting...'"
+      >Submit</button>
 
     <% unless @domain.has_donated? %>
       <span class="fsc-logo">made with <a href="http://www.freesurveycreator.com" target="_blank">FSC</a></span>
