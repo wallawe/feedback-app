@@ -2,7 +2,7 @@
 <h3># of Total Comments: <%= @total_responses.count %></h3>
 <% @domains.each do |domain| %>
     <p>
-      <%= link_to domain.url, domain_comments_path(domain.id) %> |
+      <%= link_to domain.url, domain_comments_path(domain.id) %> (<b><%= domain.comments.count %></b>) |
       <%= link_to 'Delete', domain, method: :delete, data: { confirm: 'Are you sure?' } %>
     </p>
 <% end %>
