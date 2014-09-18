@@ -476,8 +476,11 @@ h4.example-link {
     }
 
     h3 {
-      font-size: 30px;
-      margin: 10px
+      font-size: 22px;
+      margin: 10px;
+      line-height: 32px;
+      color: $green;
+      font-weight: bold;
     }
   }
 }
@@ -523,6 +526,10 @@ h4.example-link {
   font-family: Helvetica;
   font-weight: 400;
   color: #444;
+
+  &:nth-child(2) {
+    max-width: 250px;
+  }
 
   span.not-provided {
     color: #999;
@@ -634,9 +641,8 @@ h4.example-link {
       }
 
       span {
-        color: #999;
         font-size: 12px;
-        color: green;
+        color: $green;
         text-transform: uppercase;
       }
     }
