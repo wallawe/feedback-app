@@ -12,6 +12,46 @@
   </section>
 </div>
 
+<% if @domain.multiple_choice? %>
+  <% first = 0 %>
+  <% second = 0 %>
+  <% third = 0 %>
+  <% fourth = 0 %>
+
+  <% @domain.comments.each do |f| %>
+    <% f.feedback == @domain.question_1 ? first = first+1 : first %>
+    <% f.feedback == @domain.question_2 ? second = second+1 : second %>
+    <% f.feedback == @domain.question_3 ? third = third+1 : third %>
+    <% f.feedback == @domain.question_4 ? fourth = fourth+1 : fourth %>
+  <% end %>
+
+  <% total = first + second + third + fourth %>
+
+  <div class="graph-container">
+    <h3>Breakdown</h3>
+    <span class="graph-bar" style="width: <%= @domain.percent(first,total) %>%;">
+      <%= @domain.question_1 %>
+      <span class="percentage"><%= @domain.percent(first,total) %></span>
+    </span>
+    <span class="graph-bar"style="width: <%= @domain.percent(second,total) %>%;">
+      <%= @domain.question_2 %>
+      <span class="percentage"><%= @domain.percent(second,total) %></span>
+    </span>
+    <% if @domain.question_3.present? %>
+      <span class="graph-bar"style="width:<%= @domain.percent(third,total) %>%;">
+        <%= @domain.question_3 %>
+        <span class="percentage"><%= @domain.percent(third,total) %></span>
+      </span>
+    <% end %>
+    <% if @domain.question_4.present? %>
+      <span class="graph-bar" style="width:<%= @domain.percent(fourth,total) %>%;">
+        <%= @domain.question_4 %>
+        <span class="percentage"><%= @domain.percent(fourth,total) %></span>
+      </span>
+    <% end %>
+  </div>
+<% end %>
+
 <% if @domain.comments.count == 0 %>
   <h3 style="margin: 50px 0;">No feedback quite yet</h3>
 <% else %>
@@ -45,5 +85,6 @@
     </table>
   </div>
 <% end %>
+
 
 <%= will_paginate @comments %>

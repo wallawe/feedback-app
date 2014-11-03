@@ -16,7 +16,7 @@
       name="comment[url]"
       type="hidden">
 
-    <div class="questionnaire <%= "hide-this" if @domain.content_type == "free-form" %>">
+    <div class="questionnaire <%= "hide-this" if @domain.free_form? %>">
       <div class="_1q m_choice">
         <input type="radio" id="question_1" name="comment[feedback]" value="<%= @domain.question_1 %>">
         <label for="question_1" class="choice-1"><%= @domain.question_1 %></label>
@@ -39,7 +39,7 @@
 
     </div>
 
-    <div class="free-form <%= "hide-this" if @domain.content_type == "mult-choice" %>">
+    <div class="free-form <%= "hide-this" if @domain.multiple_choice? %>">
       <input
         class="interactive _ff1"
         id="feedback_email"

@@ -8,4 +8,16 @@ class Domain < ActiveRecord::Base
     "<script type='text/javascript' src='#{RAW_URL}/embeds/#{domain_id}.js'></script>"
   end
 
+  def multiple_choice?
+    content_type == "mult-choice"
+  end
+
+  def free_form?
+    content_type == "free-form"
+  end
+
+  def percent(number, total)
+    (number.to_f / total.to_f).round(2) * 100
+  end
+
 end

@@ -61,7 +61,7 @@
       <%= f.label :title, "What do you want to ask your users?" %><br>
       <%= f.text_field :title, :id => "headline_text", :class => "headline-text", :required => true %>
 
-      <div class="free-form <%= "hide-this" if @domain.content_type == "mult-choice" %>">
+      <div class="free-form <%= "hide-this" if @domain.multiple_choice? %>">
           <div class="field">
             <%= f.label :field_1, "First Field" %>
             <span class="remove-field">remove</span>
@@ -75,7 +75,7 @@
             <%= f.text_field :field_2, :class => "body-text", :id => "body_text", placeholder: "Let us know" %>
           </div>
       </div>
-      <div class="questionnaire <%= "hide-this" if @domain.content_type == "free-form" %>">
+      <div class="questionnaire <%= "hide-this" if @domain.free_form? %>">
         <div class="field">
           <%= f.label :question_1, "Choice 1" %><br>
           <%= f.text_field :question_1, :class => "1-changer", placeholder: "I love it" %>
