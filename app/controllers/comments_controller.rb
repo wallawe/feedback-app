@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       render :nothing => true, :status => 200, :content_type => 'text/html'
-      #REMOVE FOR NOW: ModelMailer.simple_email_send(@link, @feedback, @user).deliver
+      ModelMailer.simple_email_send(@link, @feedback, @user).deliver
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
