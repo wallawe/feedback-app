@@ -1007,3 +1007,19 @@ blockquote {
     }
   }
 }
+
+#error_explanation {
+  padding: 10px;
+  border: 1px solid $red;
+  margin-bottom: 20px;
+  h2 {
+    font-size: 20px;
+    color: $red;
+    margin-bottom: 10px;
+  }
+  li {
+    list-style: disc;
+    margin-left: 20px;
+    color: $red;
+  }
+}

@@ -31,8 +31,11 @@ class RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       @errors = resource.errors.full_messages
-      render :template => 'devise/registrations/errors'
+      respond_to do |format|
+        format.html { render "new" }
+        format.js   { render :template => 'devise/registrations/errors' }
       #render :json => {:success => false}
+      end
     end
   end
 
